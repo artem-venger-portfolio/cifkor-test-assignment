@@ -10,10 +10,10 @@ namespace WebClient
         private NavigationPanelViewBase _navigationPanelView;
 
         [SerializeField]
-        private WeatherScreenViewBase _weatherTabViewTemplate;
+        private UnityUIWeatherScreenView _weatherTabViewTemplate;
 
         public NavigationPanelViewBase NavigationPanelView => _navigationPanelView;
 
-        public WeatherScreenViewBase WeatherTabViewTemplate => _weatherTabViewTemplate;
+        public UnityUIWeatherScreenView WeatherTabViewTemplate => _weatherTabViewTemplate;
     }
 }
