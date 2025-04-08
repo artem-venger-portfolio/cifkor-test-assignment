@@ -78,6 +78,8 @@ namespace WebClient
             var response = JsonUtility.FromJson<WeatherResponse>(json);
             var responsePeriods = response.properties.periods;
 
+            _textureLoader.Start();
+
             foreach (var currentPeriod in responsePeriods)
             {
                 var iconURL = currentPeriod.icon;
@@ -93,6 +95,8 @@ namespace WebClient
             {
                 yield return null;
             }
+
+            _textureLoader.Stop();
 
             _requestCoroutine = null;
             _isInProgress = false;
