@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace WebClient
 {
+    [UsedImplicitly]
     public class NavigationPanelModel
     {
         private readonly List<string> _tabs = new();
