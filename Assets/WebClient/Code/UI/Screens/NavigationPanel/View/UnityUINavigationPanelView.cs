@@ -34,9 +34,9 @@ namespace WebClient
 
         public override event Action DogBreedsTabSelected;
 
-        public override void AddTab(GameObject tab)
+        public override void AddTab(string tabName, GameObject tab)
         {
-            tab.transform.SetParent(_tabContainer, false);
+            tab.transform.SetParent(_tabContainer, worldPositionStays: false);
         }
 
         private void WeatherToggleValueChanged(bool isOn)

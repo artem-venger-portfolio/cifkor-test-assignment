@@ -22,19 +22,18 @@ namespace WebClient
 
             var weatherTabModel = new WeatherScreenModel(monoBehaviourFunctions);
             var weatherTabView = Object.Instantiate(_sceneReferences.WeatherTabViewTemplate);
-            weatherTabView.gameObject.SetActive(false);
+            weatherTabView.gameObject.SetActive(value: false);
             var weatherTabPresenter = new WeatherScreenPresenter(weatherTabModel, weatherTabView);
 
             var navigationPanelModel = new NavigationPanelModel();
             var navigationPanelView = _sceneReferences.NavigationPanelView;
             var navigationPanelPresenter = new NavigationPanelPresenter(navigationPanelModel, navigationPanelView,
                                                                         dogBreedsScreen: null, weatherTabModel);
-            
-            navigationPanelView.AddTab(weatherTabView.gameObject);
+
+            navigationPanelView.AddTab(tabName: "Weather", weatherTabView.gameObject);
 
             var installers = new InstallerBase[]
             {
-                new ScreensInstaller(_sceneReferences),
                 new TabsSceneInstaller(),
             };
             foreach (var currentInstaller in installers)
