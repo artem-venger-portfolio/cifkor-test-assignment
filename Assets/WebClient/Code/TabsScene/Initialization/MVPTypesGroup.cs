@@ -2,7 +2,7 @@
 
 namespace WebClient
 {
-    public class MVPTypesGroup
+    public readonly struct MVPTypesGroup
     {
         private MVPTypesGroup(Type model, Type view, Type presenter)
         {
