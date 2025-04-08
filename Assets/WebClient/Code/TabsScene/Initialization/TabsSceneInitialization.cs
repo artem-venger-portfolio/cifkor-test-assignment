@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using UnityEngine;
+using Zenject;
 
 namespace WebClient
 {
@@ -15,6 +16,9 @@ namespace WebClient
         public void Perform()
         {
             _sceneContext = SceneContext.Create();
+
+            var monoBehaviourFunctionsGO = new GameObject(nameof(MonoBehaviourFunctions));
+            var monoBehaviourFunctions = monoBehaviourFunctionsGO.AddComponent<MonoBehaviourFunctions>();
 
             var navigationPanelModel = new NavigationPanelModel();
             var navigationPanelView = _sceneReferences.NavigationPanelView;
