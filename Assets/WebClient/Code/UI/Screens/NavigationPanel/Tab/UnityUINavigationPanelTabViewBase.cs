@@ -14,6 +14,11 @@ namespace WebClient
             SetActive(isActive: false);
         }
 
+        public void SetParent(Transform newParent)
+        {
+            transform.SetParent(newParent, worldPositionStays: false);
+        }
+
         private void SetActive(bool isActive)
         {
             gameObject.SetActive(isActive);
