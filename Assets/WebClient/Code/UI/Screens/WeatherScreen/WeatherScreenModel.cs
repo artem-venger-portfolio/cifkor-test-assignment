@@ -8,7 +8,7 @@ using UnityEngine.Networking;
 namespace WebClient
 {
     [UsedImplicitly]
-    public class WeatherScreenModel : NavigationPanelTabModelBase
+    public class WeatherScreenModel
     {
         private readonly MonoBehaviourFunctions _monoBehaviourFunctions;
         private readonly List<UnityWebRequest> _textureLoadingRequest;
@@ -34,16 +34,6 @@ namespace WebClient
         }
 
         public void StopUpdatingPeriods()
-        {
-            _monoBehaviourFunctions.KillCoroutine(_requestCoroutine);
-        }
-
-        protected override void OnOpen()
-        {
-            _requestCoroutine = _monoBehaviourFunctions.RunCoroutine(GetRequestCoroutine());
-        }
-
-        protected override void OnClose()
         {
             _monoBehaviourFunctions.KillCoroutine(_requestCoroutine);
         }
