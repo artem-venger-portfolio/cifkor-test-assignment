@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using JetBrains.Annotations;
+using UnityEngine;
 
 namespace WebClient
 {
+    [UsedImplicitly]
     public class WeatherScreenPresenter
     {
         private readonly WeatherScreenModel _model;
