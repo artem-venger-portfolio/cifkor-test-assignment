@@ -42,7 +42,7 @@ namespace WebClient
 
         public bool IsLoading()
         {
-            throw new NotImplementedException();
+            return _requests.Count > 0;
         }
 
         public void StartNew(string url)
