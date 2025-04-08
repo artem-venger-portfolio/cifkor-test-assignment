@@ -38,7 +38,8 @@ namespace WebClient
 
         private void FindAndRecordScreenInstances()
         {
-            FindScreenViews();
+            _screenViews = _sceneReferences.ScreensContainer.GetComponentsInChildren<ViewBase>(includeInactive: true);
+
             _screenTypesAndInstances = new ScreenTypesAndInstance[_screenTypes.Length];
             for (var i = 0; i < _screenTypes.Length; i++)
             {
@@ -51,11 +52,6 @@ namespace WebClient
             var viewType = group.View;
             var viewInstance = _screenViews.First(v => viewType.IsAssignableFrom(v.GetType()));
             return new ScreenTypesAndInstance(group.Model, viewType, group.Presenter, viewInstance);
-        }
-
-        private void FindScreenViews()
-        {
-            _screenViews = _sceneReferences.ScreensContainer.GetComponentsInChildren<ViewBase>(includeInactive: true);
         }
     }
 }
