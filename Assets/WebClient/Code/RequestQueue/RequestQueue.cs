@@ -39,12 +39,11 @@ namespace WebClient
                 _currentRequest = _requests.Dequeue();
                 _currentRequest.Send();
 
-                while (_currentRequest.IsDone() == false)
+                while (_currentRequest.IsInProgress())
                 {
                     yield return null;
                 }
 
-                _currentRequest.Finish();
                 _currentRequest = null;
             }
         }
