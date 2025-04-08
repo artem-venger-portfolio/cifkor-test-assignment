@@ -13,8 +13,13 @@ namespace WebClient
         [SerializeField]
         private TabToName[] _tabToNameCollection;
 
+        [SerializeField]
+        private NavigationPanelViewBase _navigationPanelView;
+
         public Component[] ScreenViews => _screenViews;
 
         public IList<TabToName> TabToNameCollection => _tabToNameCollection;
+
+        public NavigationPanelViewBase NavigationPanelView => _navigationPanelView;
     }
 }
