@@ -1,5 +1,8 @@
 using UnityEngine;
 
-public class TabsScene : MonoBehaviour
+namespace WebClient
 {
+    public class TabsScene : MonoBehaviour
+    {
+    }
 }
