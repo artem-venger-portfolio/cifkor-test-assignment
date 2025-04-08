@@ -33,6 +33,8 @@ namespace WebClient
             _monoBehaviourFunctions.KillCoroutine(_requestCoroutine);
         }
 
+        public IReadOnlyList<WeatherPeriod> Periods => _periods;
+
         private IEnumerator GetRequestCoroutine()
         {
             const float data_update_time = 5f;
