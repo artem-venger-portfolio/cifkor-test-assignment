@@ -11,14 +11,19 @@ namespace WebClient
     public class WeatherScreenModel
     {
         private readonly MonoBehaviourFunctions _monoBehaviourFunctions;
+        private readonly WeatherRequest.Factory _requestFactory;
+        private readonly IRequestQueue _requestQueue;
         private readonly List<UnityWebRequest> _textureLoadingRequest;
         private readonly Dictionary<string, Texture2D> _urlToTexture;
         private readonly List<WeatherPeriod> _periods;
         private Coroutine _requestCoroutine;
 
-        public WeatherScreenModel(MonoBehaviourFunctions monoBehaviourFunctions)
+        public WeatherScreenModel(MonoBehaviourFunctions monoBehaviourFunctions, WeatherRequest.Factory requestFactory,
+                                  IRequestQueue requestQueue)
         {
             _monoBehaviourFunctions = monoBehaviourFunctions;
+            _requestFactory = requestFactory;
+            _requestQueue = requestQueue;
             _textureLoadingRequest = new List<UnityWebRequest>();
             _urlToTexture = new Dictionary<string, Texture2D>();
             _periods = new List<WeatherPeriod>();
