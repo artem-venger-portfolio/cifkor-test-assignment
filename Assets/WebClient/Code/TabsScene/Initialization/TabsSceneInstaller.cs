@@ -19,6 +19,7 @@ namespace WebClient
                      .NonLazy();
 
             InstallNavigationPanel();
+            InstallWeatherTab();
         }
 
         private void InstallNavigationPanel()
@@ -34,6 +35,22 @@ namespace WebClient
                      .NonLazy();
 
             Container.Bind<NavigationPanelPresenter>()
+                     .AsSingle()
+                     .NonLazy();
+        }
+
+        private void InstallWeatherTab()
+        {
+            Container.Bind<WeatherScreenModel>()
+                     .AsSingle()
+                     .NonLazy();
+
+            Container.Bind(typeof(IWeatherScreenView), typeof(UnityUIWeatherScreenView))
+                     .FromComponentInNewPrefab(_sceneReferences.WeatherTabViewTemplate)
+                     .AsSingle()
+                     .NonLazy();
+
+            Container.Bind<WeatherScreenPresenter>()
                      .AsSingle()
                      .NonLazy();
         }
