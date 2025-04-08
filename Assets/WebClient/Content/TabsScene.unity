@@ -1279,6 +1279,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ee802569224fd7942cd411acf4ea60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _content: {fileID: 574211757}
+  _weatherEntryTemplate: {fileID: 6376571538190087004, guid: 409d5fb18c5c13f49a7beddaa5b0fc4b, type: 3}
 --- !u!1001 &468990168930402562
 PrefabInstance:
   m_ObjectHideFlags: 0
