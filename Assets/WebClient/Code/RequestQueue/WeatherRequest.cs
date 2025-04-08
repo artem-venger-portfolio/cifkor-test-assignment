@@ -10,16 +10,18 @@ namespace WebClient
         private readonly MonoBehaviourFunctions _monoBehaviourFunctions;
         private readonly ITextureLoader _textureLoader;
         private readonly ITextureCache _textureCache;
+        private readonly IProjectLogger _logger;
         private UnityWebRequest _weatherRequest;
         private Coroutine _requestCoroutine;
         private bool _isInProgress;
 
         public WeatherRequest(MonoBehaviourFunctions monoBehaviourFunctions, ITextureLoader textureLoader,
-                              ITextureCache textureCache)
+                              ITextureCache textureCache, IProjectLogger logger)
         {
             _monoBehaviourFunctions = monoBehaviourFunctions;
             _textureLoader = textureLoader;
             _textureCache = textureCache;
+            _logger = logger;
         }
 
         public RequestType Type => RequestType.Weather;
@@ -61,6 +63,7 @@ namespace WebClient
 
             if (_weatherRequest.result != UnityWebRequest.Result.Success)
             {
+                _logger.LogError("WeatherRequest failed!");
                 _requestCoroutine = null;
                 _isInProgress = false;
                 yield break;
