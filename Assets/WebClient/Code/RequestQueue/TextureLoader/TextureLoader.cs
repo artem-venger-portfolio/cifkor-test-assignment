@@ -63,6 +63,11 @@ namespace WebClient
             return false;
         }
 
+        public bool IsOperating()
+        {
+            return _workingCoroutine != null;
+        }
+
         private IEnumerator GetWorkingEnumerator()
         {
             while (true)

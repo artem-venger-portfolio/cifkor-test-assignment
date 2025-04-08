@@ -7,5 +7,6 @@
         void Load(string url);
         bool IsLoading();
         bool IsLoading(string url);
+        bool IsOperating();
     }
 }
