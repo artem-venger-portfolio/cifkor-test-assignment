@@ -1,4 +1,6 @@
-﻿namespace WebClient
+﻿using UnityEngine;
+
+namespace WebClient
 {
     public class NavigationPanelPresenter
     {
@@ -9,6 +11,24 @@
         {
             _model = model;
             _view = view;
+
+            _view.WeatherTabSelected += WeatherTabSelectedEventHandler;
+            _view.DogBreedsTabSelected += DogBreedsTabSelectedEventHandler;
+        }
+
+        private void WeatherTabSelectedEventHandler()
+        {
+            LogInfo(nameof(WeatherTabSelectedEventHandler));
+        }
+
+        private void DogBreedsTabSelectedEventHandler()
+        {
+            LogInfo(nameof(DogBreedsTabSelectedEventHandler));
+        }
+
+        private void LogInfo(string message)
+        {
+            Debug.Log($"[{nameof(NavigationPanelPresenter)}] {message}");
         }
     }
 }
