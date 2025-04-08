@@ -23,6 +23,11 @@ namespace WebClient
                      .AsSingle()
                      .NonLazy();
 
+            Container.Bind<IRequestQueue>()
+                     .To<RequestQueue>()
+                     .AsSingle()
+                     .NonLazy();
+
             InstallNavigationPanel();
             InstallWeatherTab();
         }
