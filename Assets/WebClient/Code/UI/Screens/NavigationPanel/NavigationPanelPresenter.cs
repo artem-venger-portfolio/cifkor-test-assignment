@@ -17,8 +17,6 @@ namespace WebClient
             _dogBreedsScreen = dogBreedsScreen;
             _weatherScreen = weatherScreen;
 
-            _model.TabAdded += TabAddedEventHandler;
-
             _view.WeatherTabSelected += WeatherTabSelectedEventHandler;
             _view.DogBreedsTabSelected += DogBreedsTabSelectedEventHandler;
         }
@@ -33,10 +31,6 @@ namespace WebClient
         {
             LogInfo(nameof(DogBreedsTabSelectedEventHandler));
             _weatherScreen.Close();
-        }
-
-        private void TabAddedEventHandler(NavigationPanelTabModelBase tabModel)
-        {
         }
 
         private void LogInfo(string message)

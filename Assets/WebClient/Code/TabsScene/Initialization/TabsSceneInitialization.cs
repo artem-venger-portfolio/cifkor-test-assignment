@@ -27,8 +27,6 @@ namespace WebClient
             var navigationPanelPresenter = new NavigationPanelPresenter(navigationPanelModel, navigationPanelView,
                                                                         dogBreedsScreen: null, weatherTabModel);
 
-            navigationPanelModel.AddTab(weatherTabModel);
-
             var installers = new InstallerBase[]
             {
                 new ScreensInstaller(_sceneReferences),
