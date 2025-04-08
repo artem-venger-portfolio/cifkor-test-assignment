@@ -1,12 +1,9 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace WebClient
 {
     public abstract class NavigationPanelViewBase : MonoBehaviour
     {
-        public abstract event Action WeatherTabSelected;
-        public abstract event Action DogBreedsTabSelected;
         public abstract void AddTab(string tabName, UnityUINavigationPanelTabViewBase tab);
     }
 }
