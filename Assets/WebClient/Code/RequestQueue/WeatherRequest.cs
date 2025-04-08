@@ -57,12 +57,6 @@ namespace WebClient
             return _isDone;
         }
 
-        public void Finish()
-        {
-            _weatherRequest.Dispose();
-            _weatherRequest = null;
-        }
-
         private IEnumerator GetRequestEnumerator()
         {
             _isDone = false;

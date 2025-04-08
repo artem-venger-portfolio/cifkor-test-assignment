@@ -7,6 +7,5 @@
         bool IsInProgress();
         void Interrupt();
         bool IsDone();
-        void Finish();
     }
 }
