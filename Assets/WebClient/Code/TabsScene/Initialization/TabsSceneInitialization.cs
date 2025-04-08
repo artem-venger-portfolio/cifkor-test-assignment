@@ -28,7 +28,7 @@ namespace WebClient
 
         private void FindAndRecordScreenInstances()
         {
-            _screenViews = _sceneReferences.ScreensContainer.GetComponentsInChildren<ViewBase>(includeInactive: true);
+            _screenViews = FindScreenViews();
 
             var screenTypes = new[]
             {
@@ -40,6 +40,11 @@ namespace WebClient
             {
                 _screenTypesAndInstances[i] = CreateScreenTypesAndInstance(screenTypes[i]);
             }
+        }
+
+        private ViewBase[] FindScreenViews()
+        {
+            return _sceneReferences.ScreensContainer.GetComponentsInChildren<ViewBase>(includeInactive: true);
         }
 
         private ScreenTypesAndInstance CreateScreenTypesAndInstance(MVPTypesGroup group)
