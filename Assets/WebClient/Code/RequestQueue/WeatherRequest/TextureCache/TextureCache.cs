@@ -5,7 +5,7 @@ namespace WebClient
 {
     public class TextureCache : ITextureCache
     {
-        private readonly Dictionary<string, Texture2D> _keyToTexture;
+        private readonly Dictionary<string, Texture2D> _keyToTexture = new();
 
         public void Save(string key, Texture2D texture)
         {
