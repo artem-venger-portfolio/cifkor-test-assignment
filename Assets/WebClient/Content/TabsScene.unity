@@ -430,11 +430,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!1 &1091601018 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8116029791325020958, guid: 149f3ff0aed19d14cb24af237052d541, type: 3}
-  m_PrefabInstance: {fileID: 366249390093622759}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1091601019 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1638249886112389186, guid: 149f3ff0aed19d14cb24af237052d541, type: 3}
@@ -445,7 +440,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 874658295400929564, guid: 149f3ff0aed19d14cb24af237052d541, type: 3}
   m_PrefabInstance: {fileID: 366249390093622759}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1091601018}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bfcb9b83e3cc4c75b9a166c6f9a608d5, type: 3}
@@ -501,11 +496,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9cdf867799400db1c2e9fb8ff875b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tabToNameCollection:
-  - _name: Weather
-    _tab: {fileID: 1978070111}
-  - _name: DogBreeds
-    _tab: {fileID: 1091601018}
   _toggleGroup: {fileID: 812739097}
   _weatherToggle: {fileID: 1709763770}
   _dogBreedsToggle: {fileID: 1900434837}
@@ -756,11 +746,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1978070111 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3640750462351907697, guid: 5048af166267c7140aea88f8ca3e8cb8, type: 3}
-  m_PrefabInstance: {fileID: 2168809735571607833}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1978070112 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6871028573440516542, guid: 5048af166267c7140aea88f8ca3e8cb8, type: 3}
@@ -771,7 +756,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6278427258713109845, guid: 5048af166267c7140aea88f8ca3e8cb8, type: 3}
   m_PrefabInstance: {fileID: 2168809735571607833}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1978070111}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23ee802569224fd7942cd411acf4ea60, type: 3}
