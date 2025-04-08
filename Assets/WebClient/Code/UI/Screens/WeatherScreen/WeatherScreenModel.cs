@@ -13,14 +13,16 @@ namespace WebClient
         private readonly WeatherRequest.Factory _requestFactory;
         private readonly List<WeatherPeriod> _periods;
         private readonly IRequestQueue _requestQueue;
+        private readonly IProjectLogger _logger;
         private Coroutine _requestCoroutine;
 
         public WeatherScreenModel(MonoBehaviourFunctions monoBehaviourFunctions, WeatherRequest.Factory requestFactory,
-                                  IRequestQueue requestQueue)
+                                  IRequestQueue requestQueue, IProjectLogger logger)
         {
             _monoBehaviourFunctions = monoBehaviourFunctions;
             _requestFactory = requestFactory;
             _requestQueue = requestQueue;
+            _logger = logger;
             _periods = new List<WeatherPeriod>();
         }
 
@@ -30,11 +32,13 @@ namespace WebClient
 
         public void StartUpdatingPeriods()
         {
+            LogInfo(nameof(StartUpdatingPeriods));
             _requestCoroutine = _monoBehaviourFunctions.RunCoroutine(GetRequestCoroutine());
         }
 
         public void StopUpdatingPeriods()
         {
+            LogInfo(nameof(StopUpdatingPeriods));
             _monoBehaviourFunctions.KillCoroutine(_requestCoroutine);
         }
 
@@ -44,6 +48,7 @@ namespace WebClient
 
             while (true)
             {
+                LogInfo(message: "Creating request");
                 var request = _requestFactory.Create(RequestCompletedEventHandler);
                 _requestQueue.Add(request);
 
@@ -53,9 +58,15 @@ namespace WebClient
 
         private void RequestCompletedEventHandler(WeatherRequest request)
         {
+            LogInfo(nameof(RequestCompletedEventHandler));
             _periods.Clear();
             _periods.AddRange(request.Result);
             PeriodsUpdated?.Invoke();
+        }
+
+        private void LogInfo(string message)
+        {
+            _logger.LogInfo($"[{nameof(WeatherScreenModel)}] {message}");
         }
     }
 }
