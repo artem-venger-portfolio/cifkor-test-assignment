@@ -24,11 +24,13 @@ namespace WebClient
         private void WeatherTabSelectedEventHandler()
         {
             LogInfo(nameof(WeatherTabSelectedEventHandler));
+            _weatherScreen.Open();
         }
 
         private void DogBreedsTabSelectedEventHandler()
         {
             LogInfo(nameof(DogBreedsTabSelectedEventHandler));
+            _weatherScreen.Close();
         }
 
         private void LogInfo(string message)
