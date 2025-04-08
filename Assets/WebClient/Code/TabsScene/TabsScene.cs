@@ -6,5 +6,11 @@ namespace WebClient
     {
         [SerializeField]
         private TabsSceneReferences _sceneReferences;
+
+        private void Start()
+        {
+            var initialization = new TabsSceneInitialization(_sceneReferences);
+            initialization.Perform();
+        }
     }
 }
