@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace WebClient
 {
-    public sealed class UnityUIWeatherScreenView : WeatherScreenViewBase
+    public sealed class UnityUIWeatherScreenView : UnityUINavigationPanelTabViewBase, IWeatherScreenView
     {
         [SerializeField]
         private RectTransform _content;
@@ -13,7 +13,7 @@ namespace WebClient
 
         private readonly List<WeatherEntry> _entries = new();
 
-        public override void DisplayPeriods(IReadOnlyList<WeatherPeriod> periods)
+        public void DisplayPeriods(IReadOnlyList<WeatherPeriod> periods)
         {
             foreach (var currentEntry in _entries)
             {
