@@ -49,6 +49,11 @@ namespace WebClient
                 _requestCoroutine = null;
             }
 
+            if (_textureLoader.IsOperating())
+            {
+                _textureLoader.Stop();
+            }
+
             _weatherRequest.Dispose();
             _weatherRequest = null;
         }
