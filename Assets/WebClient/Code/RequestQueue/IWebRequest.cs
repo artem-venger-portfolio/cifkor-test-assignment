@@ -6,6 +6,5 @@
         void Send();
         bool IsInProgress();
         void Interrupt();
-        bool IsDone();
     }
 }
