@@ -28,5 +28,22 @@ namespace WebClient
         {
             _tab = tab;
         }
+
+        public void SubscribeToValueChange()
+        {
+            _toggle.onValueChanged.AddListener(ValueChangedEventHandler);
+        }
+
+        private void ValueChangedEventHandler(bool isOn)
+        {
+            if (isOn)
+            {
+                _tab.Show();
+            }
+            else
+            {
+                _tab.Hide();
+            }
+        }
     }
 }

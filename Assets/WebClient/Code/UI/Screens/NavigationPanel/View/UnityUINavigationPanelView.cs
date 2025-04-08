@@ -41,6 +41,7 @@ namespace WebClient
             toggle.SetPageName(tabName);
             toggle.SetToggleGroup(_toggleGroup);
             toggle.SetTab(tab);
+            toggle.SubscribeToValueChange();
         }
 
         private void WeatherToggleValueChanged(bool isOn)
