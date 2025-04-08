@@ -15,12 +15,24 @@ namespace WebClient
             _model = model;
             _view = view;
 
+            view.Shown += ViewShownEventHandler;
+            view.Hidden += ViewHiddenEventHandler;
             _model.PeriodsUpdated += PeriodsUpdatedEventHandler;
         }
 
         private void PeriodsUpdatedEventHandler()
         {
             _view.DisplayPeriods(_model.Periods);
+        }
+
+        private void ViewShownEventHandler()
+        {
+            _model.StartUpdatingPeriods();
+        }
+
+        private void ViewHiddenEventHandler()
+        {
+            _model.StopUpdatingPeriods();
         }
     }
 }
