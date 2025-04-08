@@ -16,6 +16,26 @@ namespace WebClient
             _requests = new List<UnityWebRequest>();
         }
 
+        public void Start()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Stop()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Load(string url)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool IsLoading()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void StartNew(string url)
         {
             var textureLoadingRequest = UnityWebRequestTexture.GetTexture(url);
