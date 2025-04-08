@@ -13,6 +13,16 @@ namespace WebClient
 
         private readonly List<WeatherEntry> _entries = new();
 
+        public override void Open()
+        {
+            SetActive(isActive: true);
+        }
+
+        public override void Close()
+        {
+            SetActive(isActive: false);
+        }
+
         public override void DisplayPeriods(List<WeatherPeriod> periods)
         {
             foreach (var currentEntry in _entries)
@@ -33,6 +43,11 @@ namespace WebClient
                 currentWeatherEntry.SetTemperature(currentPeriodData.Temperature, currentPeriodData.Unit);
                 currentWeatherEntry.gameObject.SetActive(value: true);
             }
+        }
+
+        private void SetActive(bool isActive)
+        {
+            gameObject.SetActive(isActive);
         }
     }
 }
