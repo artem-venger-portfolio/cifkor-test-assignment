@@ -1,10 +1,11 @@
 ﻿using System;
+using UnityEngine;
 
 namespace WebClient
 {
     public readonly struct ScreenTypesAndInstance
     {
-        public ScreenTypesAndInstance(Type model, Type viewType, Type presenter, ViewBase viewInstance)
+        public ScreenTypesAndInstance(Type model, Type viewType, Type presenter, Component viewInstance)
         {
             Model = model;
             ViewType = viewType;
@@ -15,6 +16,6 @@ namespace WebClient
         public Type Model { get; }
         public Type ViewType { get; }
         public Type Presenter { get; }
-        public ViewBase ViewInstance { get; }
+        public Component ViewInstance { get; }
     }
 }
