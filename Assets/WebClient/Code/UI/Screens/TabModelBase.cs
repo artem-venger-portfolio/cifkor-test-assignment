@@ -6,31 +6,43 @@ namespace WebClient
     {
         private bool _isOpen;
 
-        public bool IsOpen
-        {
-            get => _isOpen;
-            private set
-            {
-                if (_isOpen == value)
-                {
-                    return;
-                }
-
-                _isOpen = value;
-                IsOpenChanged?.Invoke(_isOpen);
-            }
-        }
-
         public event Action<bool> IsOpenChanged;
 
         public void Open()
         {
-            IsOpen = true;
+            if (_isOpen)
+            {
+                return;
+            }
+
+            _isOpen = true;
+            OnOpen();
+            InvokeIsOpenChanged();
         }
 
         public void Close()
         {
-            IsOpen = false;
+            if (_isOpen == false)
+            {
+                return;
+            }
+
+            _isOpen = false;
+            OnClose();
+            InvokeIsOpenChanged();
+        }
+
+        protected virtual void OnOpen()
+        {
+        }
+
+        protected virtual void OnClose()
+        {
+        }
+
+        private void InvokeIsOpenChanged()
+        {
+            IsOpenChanged?.Invoke(_isOpen);
         }
     }
 }
