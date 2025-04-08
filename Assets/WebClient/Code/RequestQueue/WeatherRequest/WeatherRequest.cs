@@ -104,6 +104,8 @@ namespace WebClient
 
             _textureLoader.Stop();
 
+            FillResult();
+
             _requestCoroutine = null;
             _isInProgress = false;
         }
@@ -111,6 +113,19 @@ namespace WebClient
         private bool IsTextureLoadingOrLoaded(string url)
         {
             return _textureLoader.IsLoading(url) || _textureCache.Contains(url);
+        }
+
+        private void FillResult()
+        {
+            Result.Clear();
+            foreach (var currentResponsePeriod in _responsePeriods)
+            {
+                var texture = _textureCache.Get(currentResponsePeriod.icon);
+                var temperature = currentResponsePeriod.temperature;
+                var temperatureUnit = currentResponsePeriod.temperatureUnit;
+                var period = new WeatherPeriod(texture, temperature, temperatureUnit);
+                Result.Add(period);
+            }
         }
 
         public class Factory : PlaceholderFactory<WeatherRequest>
