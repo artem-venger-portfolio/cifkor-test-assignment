@@ -3,9 +3,9 @@
     public class NavigationPanelPresenter
     {
         private readonly NavigationPanelModel _model;
-        private readonly NavigationPanelViewBase _view;
+        private readonly INavigationPanelView _view;
 
-        public NavigationPanelPresenter(NavigationPanelModel model, NavigationPanelViewBase view)
+        public NavigationPanelPresenter(NavigationPanelModel model, INavigationPanelView view)
         {
             _model = model;
             _view = view;
