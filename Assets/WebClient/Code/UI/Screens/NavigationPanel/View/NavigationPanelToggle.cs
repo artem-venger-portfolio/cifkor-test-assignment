@@ -13,6 +13,7 @@ namespace WebClient
         private Toggle _toggle;
 
         private UnityUINavigationPanelTabViewBase _tab;
+        private bool _lastValue;
 
         public void SetPageName(string pageName)
         {
@@ -31,12 +32,19 @@ namespace WebClient
 
         public void SubscribeToValueChange()
         {
+            _lastValue = _toggle.isOn;
             _toggle.onValueChanged.AddListener(ValueChangedEventHandler);
         }
 
         private void ValueChangedEventHandler(bool isOn)
         {
-            if (isOn)
+            if (_lastValue == isOn)
+            {
+                return;
+            }
+            _lastValue = isOn;
+
+            if (_lastValue)
             {
                 _tab.Show();
             }
