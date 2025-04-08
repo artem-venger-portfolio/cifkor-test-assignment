@@ -930,6 +930,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9cdf867799400db1c2e9fb8ff875b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tabToNameCollection:
+  - _name: Weather
+    _tab: {fileID: 1978070111}
+  - _name: DogBreeds
+    _tab: {fileID: 1091601018}
   _weatherToggle: {fileID: 1709763770}
   _dogBreedsToggle: {fileID: 1900434837}
 --- !u!1 &1421842464

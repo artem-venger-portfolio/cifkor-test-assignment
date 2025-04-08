@@ -7,6 +7,9 @@ namespace WebClient
     public sealed class UnityUINavigationPanelView : NavigationPanelViewBase
     {
         [SerializeField]
+        private TabToName[] _tabToNameCollection;
+        
+        [SerializeField]
         private Toggle _weatherToggle;
 
         [SerializeField]
