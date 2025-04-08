@@ -16,6 +16,9 @@ namespace WebClient
         public void Perform()
         {
             _sceneContext = SceneContext.Create();
+            var sceneInstaller = new TabsSceneInstaller();
+            _sceneContext.AddNormalInstaller(sceneInstaller);
+            _sceneContext.Run();
         }
     }
 }
