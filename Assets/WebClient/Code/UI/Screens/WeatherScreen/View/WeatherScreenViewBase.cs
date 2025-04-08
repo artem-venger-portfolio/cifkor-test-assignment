@@ -6,6 +6,6 @@ namespace WebClient
     {
         public abstract void Open();
         public abstract void Close();
-        public abstract void DisplayPeriods(List<WeatherPeriod> periods);
+        public abstract void DisplayPeriods(IReadOnlyList<WeatherPeriod> periods);
     }
 }

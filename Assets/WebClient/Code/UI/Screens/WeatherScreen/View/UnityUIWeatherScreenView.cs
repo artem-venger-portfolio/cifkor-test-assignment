@@ -23,7 +23,7 @@ namespace WebClient
             SetActive(isActive: false);
         }
 
-        public override void DisplayPeriods(List<WeatherPeriod> periods)
+        public override void DisplayPeriods(IReadOnlyList<WeatherPeriod> periods)
         {
             foreach (var currentEntry in _entries)
             {
