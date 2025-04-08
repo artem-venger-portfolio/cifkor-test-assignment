@@ -70,7 +70,11 @@ namespace WebClient
 
         private void DisplayWeather(string json)
         {
-            Debug.Log(json);
+            var response = JsonUtility.FromJson<WeatherResponse>(json);
+            foreach (var currentPeriod in response.properties.periods)
+            {
+                Debug.Log($"Icon: {currentPeriod.icon}, Temperature: {currentPeriod.temperature}{currentPeriod.temperatureUnit}");
+            }
         }
     }
 }
