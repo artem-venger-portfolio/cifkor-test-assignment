@@ -23,5 +23,10 @@ namespace WebClient
             toggle.SetTab(tab);
             toggle.SubscribeToValueChange();
         }
+
+        public void CreateTabs()
+        {
+            
+        }
     }
 }

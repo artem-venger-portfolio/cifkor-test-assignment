@@ -2,5 +2,6 @@
 {
     public interface INavigationPanelView
     {
+        void CreateTabs();
     }
 }
