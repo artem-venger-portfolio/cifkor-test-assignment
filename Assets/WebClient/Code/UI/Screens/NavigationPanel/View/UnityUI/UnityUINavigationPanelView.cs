@@ -9,7 +9,7 @@ namespace WebClient
         private ToggleGroup _toggleGroup;
 
         [SerializeField]
-        private NavigationPanelToggle _toggleTemplate;
+        private UnityUINavigationPanelToggle _toggleTemplate;
 
         [SerializeField]
         private Transform _tabContainer;

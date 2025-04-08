@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace WebClient
 {
-    public class NavigationPanelToggle : MonoBehaviour
+    public class UnityUINavigationPanelToggle : MonoBehaviour
     {
         [SerializeField]
         private TMP_Text _pageNameField;
