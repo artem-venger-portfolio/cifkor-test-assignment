@@ -78,7 +78,13 @@ namespace WebClient
             var response = JsonUtility.FromJson<WeatherResponse>(json);
             foreach (var currentPeriod in response.properties.periods)
             {
-                var textureLoadingRequest = UnityWebRequestTexture.GetTexture(currentPeriod.icon);
+                var iconURL = currentPeriod.icon;
+                if (IsTextureLoadingOrLoaded(iconURL))
+                {
+                    continue;
+                }
+
+                var textureLoadingRequest = UnityWebRequestTexture.GetTexture(iconURL);
                 textureLoadingRequest.SendWebRequest();
                 _textureLoadingRequest.Add(textureLoadingRequest);
             }
@@ -117,6 +123,19 @@ namespace WebClient
             }
 
             return true;
+        }
+
+        private bool IsTextureLoadingOrLoaded(string url)
+        {
+            foreach (var currentRequest in _textureLoadingRequest)
+            {
+                if (currentRequest.url == url)
+                {
+                    return true;
+                }
+            }
+
+            return _urlToTexture.ContainsKey(url);
         }
     }
 }
