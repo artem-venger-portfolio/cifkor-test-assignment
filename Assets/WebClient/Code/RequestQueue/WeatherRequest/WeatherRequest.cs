@@ -13,6 +13,7 @@ namespace WebClient
         private readonly TextureLoader _textureLoader;
         private readonly ITextureCache _textureCache;
         private readonly IProjectLogger _logger;
+        private WeatherResponsePeriod[] _responsePeriods;
         private UnityWebRequest _weatherRequest;
         private Coroutine _requestCoroutine;
         private bool _isInProgress;
@@ -81,11 +82,11 @@ namespace WebClient
 
             var json = _weatherRequest.downloadHandler.text;
             var response = JsonUtility.FromJson<WeatherResponse>(json);
-            var responsePeriods = response.properties.periods;
+            _responsePeriods = response.properties.periods;
 
             _textureLoader.Start();
 
-            foreach (var currentPeriod in responsePeriods)
+            foreach (var currentPeriod in _responsePeriods)
             {
                 var iconURL = currentPeriod.icon;
                 if (IsTextureLoadingOrLoaded(iconURL))
