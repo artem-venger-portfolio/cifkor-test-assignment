@@ -123,6 +123,8 @@ namespace WebClient
                 var period = new WeatherPeriod(texture, temperature, temperatureUnit);
                 _periods.Add(period);
             }
+
+            _view.DisplayPeriods(_periods);
         }
 
         private bool IsAllTexturesLoaded()

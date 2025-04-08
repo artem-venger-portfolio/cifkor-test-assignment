@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace WebClient
 {
@@ -9,5 +10,29 @@ namespace WebClient
 
         [SerializeField]
         private WeatherEntry _weatherEntryTemplate;
+
+        private readonly List<WeatherEntry> _entries = new();
+
+        public override void DisplayPeriods(List<WeatherPeriod> periods)
+        {
+            foreach (var currentEntry in _entries)
+            {
+                currentEntry.gameObject.SetActive(value: false);
+            }
+
+            for (var i = 0; i < periods.Count; i++)
+            {
+                var currentPeriodData = periods[i];
+                if (i >= _entries.Count)
+                {
+                    _entries.Add(Instantiate(_weatherEntryTemplate, _content));
+                }
+
+                var currentWeatherEntry = _entries[i];
+                currentWeatherEntry.SetTexture(currentPeriodData.Texture);
+                currentWeatherEntry.SetTemperature(currentPeriodData.Temperature, currentPeriodData.Unit);
+                currentWeatherEntry.gameObject.SetActive(value: true);
+            }
+        }
     }
 }

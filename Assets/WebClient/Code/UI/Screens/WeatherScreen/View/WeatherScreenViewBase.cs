@@ -1,4 +1,6 @@
-﻿namespace WebClient
+﻿using System.Collections.Generic;
+
+namespace WebClient
 {
     public abstract class WeatherScreenViewBase : ViewBase
     {
@@ -11,6 +13,8 @@
         {
             SetActive(isActive: false);
         }
+
+        public abstract void DisplayPeriods(List<WeatherPeriod> periods);
 
         private void SetActive(bool isActive)
         {
