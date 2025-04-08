@@ -16,10 +16,15 @@ namespace WebClient
         [SerializeField]
         private NavigationPanelViewBase _navigationPanelView;
 
+        [SerializeField]
+        private WeatherScreenViewBase _weatherTabViewTemplate;
+
         public Component[] ScreenViews => _screenViews;
 
         public IList<TabToName> TabToNameCollection => _tabToNameCollection;
 
         public NavigationPanelViewBase NavigationPanelView => _navigationPanelView;
+
+        public WeatherScreenViewBase WeatherTabViewTemplate => _weatherTabViewTemplate;
     }
 }
