@@ -21,6 +21,9 @@ namespace WebClient
             var monoBehaviourFunctions = monoBehaviourFunctionsGO.AddComponent<MonoBehaviourFunctions>();
 
             var weatherTabModel = new WeatherScreenModel(monoBehaviourFunctions);
+            var weatherTabView = Object.Instantiate(_sceneReferences.WeatherTabViewTemplate);
+            weatherTabView.gameObject.SetActive(false);
+            var weatherTabPresenter = new WeatherScreenPresenter(weatherTabModel, weatherTabView);
 
             var navigationPanelModel = new NavigationPanelModel();
             var navigationPanelView = _sceneReferences.NavigationPanelView;
