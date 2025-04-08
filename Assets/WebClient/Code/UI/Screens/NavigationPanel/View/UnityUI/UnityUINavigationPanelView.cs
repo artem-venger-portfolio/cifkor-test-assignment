@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace WebClient
 {
@@ -14,6 +15,8 @@ namespace WebClient
         [SerializeField]
         private Transform _tabContainer;
 
+        private UnityUIWeatherScreenView _weatherTab;
+
         public void AddTab(string tabName, UnityUINavigationPanelTabViewBase tab)
         {
             tab.SetParent(_tabContainer);
@@ -26,7 +29,13 @@ namespace WebClient
 
         public void CreateTabs()
         {
-            
+            AddTab(tabName: "Weather", _weatherTab);
+        }
+
+        [Inject]
+        private void InjectDependencies(UnityUIWeatherScreenView weatherTab)
+        {
+            _weatherTab = weatherTab;
         }
     }
 }
