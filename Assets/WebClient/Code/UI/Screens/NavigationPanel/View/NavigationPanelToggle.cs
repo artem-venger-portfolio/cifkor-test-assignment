@@ -17,6 +17,7 @@ namespace WebClient
 
         public void SetPageName(string pageName)
         {
+            name = pageName;
             _pageNameField.text = pageName;
         }
 
