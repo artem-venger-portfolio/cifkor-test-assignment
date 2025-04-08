@@ -30,7 +30,7 @@ namespace WebClient
             var navigationPanelPresenter = new NavigationPanelPresenter(navigationPanelModel, navigationPanelView,
                                                                         dogBreedsScreen: null, weatherTabModel);
 
-            navigationPanelView.AddTab(tabName: "Weather", weatherTabView.gameObject);
+            navigationPanelView.AddTab(tabName: "Weather", weatherTabView);
 
             var installers = new InstallerBase[]
             {

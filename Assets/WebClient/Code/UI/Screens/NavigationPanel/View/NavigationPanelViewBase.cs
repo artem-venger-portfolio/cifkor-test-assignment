@@ -7,6 +7,6 @@ namespace WebClient
     {
         public abstract event Action WeatherTabSelected;
         public abstract event Action DogBreedsTabSelected;
-        public abstract void AddTab(string tabName, GameObject tab);
+        public abstract void AddTab(string tabName, UnityUINavigationPanelTabViewBase tab);
     }
 }

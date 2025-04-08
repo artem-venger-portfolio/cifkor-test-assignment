@@ -34,9 +34,9 @@ namespace WebClient
 
         public override event Action DogBreedsTabSelected;
 
-        public override void AddTab(string tabName, GameObject tab)
+        public override void AddTab(string tabName, UnityUINavigationPanelTabViewBase tab)
         {
-            tab.transform.SetParent(_tabContainer, worldPositionStays: false);
+            tab.SetParent(_tabContainer);
             var toggle = Instantiate(_toggleTemplate, _toggleGroup.transform, worldPositionStays: false);
             toggle.SetPageName(tabName);
             toggle.SetToggleGroup(_toggleGroup);
