@@ -9,6 +9,20 @@
         {
             _model = model;
             _view = view;
+
+            _model.IsOpenChanged += InOpenChangedEventHandler;
+        }
+
+        private void InOpenChangedEventHandler(bool isOpen)
+        {
+            if (isOpen)
+            {
+                _view.Open();
+            }
+            else
+            {
+                _view.Close();
+            }
         }
     }
 }
