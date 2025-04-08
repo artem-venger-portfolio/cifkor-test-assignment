@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace WebClient
@@ -12,6 +13,10 @@ namespace WebClient
         private WeatherEntry _weatherEntryTemplate;
 
         private readonly List<WeatherEntry> _entries = new();
+
+        public event Action Shown;
+
+        public event Action Hidden;
 
         public void DisplayPeriods(IReadOnlyList<WeatherPeriod> periods)
         {
@@ -33,6 +38,16 @@ namespace WebClient
                 currentWeatherEntry.SetTemperature(currentPeriodData.Temperature, currentPeriodData.Unit);
                 currentWeatherEntry.gameObject.SetActive(value: true);
             }
+        }
+
+        private void OnEnable()
+        {
+            Shown?.Invoke();
+        }
+
+        private void OnDisable()
+        {
+            Hidden?.Invoke();
         }
     }
 }
