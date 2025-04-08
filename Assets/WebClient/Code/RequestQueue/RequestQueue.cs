@@ -10,6 +10,7 @@ namespace WebClient
     {
         private readonly MonoBehaviourFunctions _monoBehaviourFunctions;
         private readonly Queue<IWebRequest> _requests = new();
+        private readonly Queue<IWebRequest> _interimQueue = new();
         private readonly IProjectLogger _logger;
         private Coroutine _handleRequestsCoroutine;
         private IWebRequest _currentRequest;
@@ -23,6 +24,12 @@ namespace WebClient
         public void Add(IWebRequest request)
         {
             _requests.Enqueue(request);
+        }
+
+        public void Interrupt(RequestType requestType)
+        {
+            InterruptCurrentRequestWithType(requestType);
+            RemoveFromQueueRequestsWithType(requestType);
         }
 
         public void Start()
@@ -51,6 +58,33 @@ namespace WebClient
         private bool HasRequestsInterfaces()
         {
             return _requests.Count > 0;
+        }
+
+        private void InterruptCurrentRequestWithType(RequestType requestType)
+        {
+            if (_currentRequest.Type == requestType)
+            {
+                _currentRequest.Interrupt();
+                _currentRequest = null;
+            }
+        }
+
+        private void RemoveFromQueueRequestsWithType(RequestType requestType)
+        {
+            while (_requests.TryDequeue(out var currentRequest))
+            {
+                if (currentRequest.Type == requestType)
+                {
+                    continue;
+                }
+
+                _interimQueue.Enqueue(currentRequest);
+            }
+
+            while (_interimQueue.TryDequeue(out var currentRequest))
+            {
+                _requests.Enqueue(currentRequest);
+            }
         }
     }
 }
