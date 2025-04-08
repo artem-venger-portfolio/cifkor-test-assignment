@@ -20,10 +20,12 @@ namespace WebClient
             var monoBehaviourFunctionsGO = new GameObject(nameof(MonoBehaviourFunctions));
             var monoBehaviourFunctions = monoBehaviourFunctionsGO.AddComponent<MonoBehaviourFunctions>();
 
+            var weatherTabModel = new WeatherScreenModel(monoBehaviourFunctions);
+
             var navigationPanelModel = new NavigationPanelModel();
             var navigationPanelView = _sceneReferences.NavigationPanelView;
             var navigationPanelPresenter = new NavigationPanelPresenter(navigationPanelModel, navigationPanelView,
-                                                                        dogBreedsScreen: null, weatherScreen: null);
+                                                                        dogBreedsScreen: null, weatherTabModel);
 
             var installers = new InstallerBase[]
             {
