@@ -21,6 +21,9 @@ namespace WebClient
         [SerializeField]
         private NavigationPanelToggle _toggleTemplate;
 
+        [SerializeField]
+        private Transform _tabContainer;
+
         private void Start()
         {
             _weatherToggle.onValueChanged.AddListener(WeatherToggleValueChanged);
@@ -33,7 +36,7 @@ namespace WebClient
 
         public override void AddTab(GameObject tab)
         {
-            tab.transform.SetParent(_toggleGroup.transform, false);
+            tab.transform.SetParent(_tabContainer, false);
         }
 
         public void AddTab(string pageName, GameObject tabView)
