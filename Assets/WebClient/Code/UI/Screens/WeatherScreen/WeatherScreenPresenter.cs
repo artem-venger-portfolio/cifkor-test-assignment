@@ -59,12 +59,18 @@ namespace WebClient
                             break;
                         case UnityWebRequest.Result.Success:
                             Debug.Log(message: "Success");
+                            DisplayWeather(webRequest.downloadHandler.text);
                             break;
                     }
                 }
 
                 yield return new WaitForSeconds(data_update_time);
             }
+        }
+
+        private void DisplayWeather(string json)
+        {
+            Debug.Log(json);
         }
     }
 }
