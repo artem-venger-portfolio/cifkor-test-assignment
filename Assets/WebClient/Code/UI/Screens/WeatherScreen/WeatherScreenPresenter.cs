@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace WebClient
 {
@@ -37,10 +38,31 @@ namespace WebClient
         private IEnumerator GetRequestCoroutine()
         {
             const float data_update_time = 5f;
+            const string uri = "https://api.weather.gov/gridpoints/TOP/32,81/forecast";
 
             while (true)
             {
-                Debug.Log(message: "Update data");
+                using (var webRequest = UnityWebRequest.Get(uri))
+                {
+                    yield return webRequest.SendWebRequest();
+
+                    switch (webRequest.result)
+                    {
+                        case UnityWebRequest.Result.ConnectionError:
+                            Debug.LogError(message: "ConnectionError");
+                            break;
+                        case UnityWebRequest.Result.DataProcessingError:
+                            Debug.LogError(message: "DataProcessingError");
+                            break;
+                        case UnityWebRequest.Result.ProtocolError:
+                            Debug.LogError(message: "ProtocolError");
+                            break;
+                        case UnityWebRequest.Result.Success:
+                            Debug.Log(message: "Success");
+                            break;
+                    }
+                }
+
                 yield return new WaitForSeconds(data_update_time);
             }
         }
