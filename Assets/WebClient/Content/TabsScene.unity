@@ -832,6 +832,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DogBreedsScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 8116029791325020958, guid: 149f3ff0aed19d14cb24af237052d541, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
