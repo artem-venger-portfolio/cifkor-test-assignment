@@ -30,6 +30,12 @@ namespace WebClient
         {
             _monoBehaviourFunctions.KillCoroutine(_workingCoroutine);
             _workingCoroutine = null;
+
+            foreach (var currentRequest in _requests)
+            {
+                currentRequest.Dispose();
+            }
+            _requests.Clear();
         }
 
         public void Load(string url)
