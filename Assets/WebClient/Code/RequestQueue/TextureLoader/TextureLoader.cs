@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -79,7 +78,31 @@ namespace WebClient
             while (true)
             {
                 yield return new WaitUntil(IsLoading);
+
+                for (var i = 0; i < _requests.Count; i++)
+                {
+                    var currentRequest = _requests[i];
+                    if (currentRequest.isDone == false)
+                    {
+                        continue;
+                    }
+
+                    _requests.RemoveAt(i--);
+                    FinishRequest(currentRequest);
+                }
             }
+        }
+
+        private void FinishRequest(UnityWebRequest request)
+        {
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                var key = request.url;
+                var texture = DownloadHandlerTexture.GetContent(request);
+                _textureCache.Save(key, texture);
+            }
+
+            request.Dispose();
         }
     }
 }
