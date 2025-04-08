@@ -31,6 +31,10 @@ namespace WebClient
 
         public override event Action DogBreedsTabSelected;
 
+        public void AddTab(string pageName, GameObject tabView)
+        {
+        }
+
         private void WeatherToggleValueChanged(bool isOn)
         {
             if (isOn == false)
