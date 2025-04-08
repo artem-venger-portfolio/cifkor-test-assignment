@@ -13,6 +13,11 @@ namespace WebClient
 
         public override void InstallBindings()
         {
+            InstallNavigationPanel();
+        }
+
+        private void InstallNavigationPanel()
+        {
             Container.Bind<NavigationPanelModel>()
                      .AsSingle()
                      .NonLazy();
