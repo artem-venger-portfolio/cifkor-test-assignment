@@ -43,6 +43,7 @@ namespace WebClient
             var screenTypes = new[]
             {
                 MVPTypesGroup.Create<NavigationPanelModel, NavigationPanelViewBase, NavigationPanelPresenter>(),
+                MVPTypesGroup.Create<WeatherScreenModel, WeatherScreenViewBase, WeatherScreenPresenter>(),
             };
 
             _screenTypesAndInstances = new ScreenTypesAndInstance[screenTypes.Length];

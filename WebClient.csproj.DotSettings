@@ -9,4 +9,6 @@
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cwebclient_005Ccode_005Cui_005Cscreens_005Cnavigationpanel/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cwebclient_005Ccode_005Cui_005Cscreens_005Ctabs/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cwebclient_005Ccode_005Cui_005Cscreens/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cwebclient_005Ccode_005Cui_005Cscreens_005Ctabs_005Cview/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cwebclient_005Ccode_005Cui_005Cscreens_005Ctabs_005Cview/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cwebclient_005Ccode_005Cui_005Cscreens_005Cweatherscreen/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/CodeInspection/NamespaceProvider/NamespaceFoldersToSkip/=assets_005Cwebclient_005Ccode_005Cui_005Cscreens_005Cweatherscreen_005Cview/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
