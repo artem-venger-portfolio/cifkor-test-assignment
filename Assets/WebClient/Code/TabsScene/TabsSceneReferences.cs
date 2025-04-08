@@ -9,6 +9,11 @@ namespace WebClient
         [SerializeField]
         private GameObject _screensContainer;
 
+        [SerializeField]
+        private Component[] _screenViews;
+
         public GameObject ScreensContainer => _screensContainer;
+
+        public Component[] ScreenViews => _screenViews;
     }
 }

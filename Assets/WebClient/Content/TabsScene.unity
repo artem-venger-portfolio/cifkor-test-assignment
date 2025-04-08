@@ -368,6 +368,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneReferences:
     _screensContainer: {fileID: 1421842464}
+    _screenViews:
+    - {fileID: 1978070113}
+    - {fileID: 1091601020}
+    - {fileID: 1183071579}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
