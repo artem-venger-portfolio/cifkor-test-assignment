@@ -387,6 +387,11 @@ MonoBehaviour:
     - {fileID: 1978070113}
     - {fileID: 1091601020}
     - {fileID: 1183071579}
+    _tabToNameCollection:
+    - _name: Weather
+      _tab: {fileID: 1978070111}
+    - _name: DogBreeds
+      _tab: {fileID: 1091601018}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
