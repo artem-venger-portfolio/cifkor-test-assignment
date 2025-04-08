@@ -16,6 +16,11 @@ namespace WebClient
         {
             _sceneContext = SceneContext.Create();
 
+            var navigationPanelModel = new NavigationPanelModel();
+            var navigationPanelView = _sceneReferences.NavigationPanelView;
+            var navigationPanelPresenter = new NavigationPanelPresenter(navigationPanelModel, navigationPanelView,
+                                                                        dogBreedsScreen: null, weatherScreen: null);
+
             var installers = new InstallerBase[]
             {
                 new ScreensInstaller(_sceneReferences),
