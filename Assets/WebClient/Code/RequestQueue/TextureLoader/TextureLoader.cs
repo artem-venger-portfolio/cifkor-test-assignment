@@ -45,13 +45,6 @@ namespace WebClient
             return _requests.Count > 0;
         }
 
-        public void StartNew(string url)
-        {
-            var textureLoadingRequest = UnityWebRequestTexture.GetTexture(url);
-            textureLoadingRequest.SendWebRequest();
-            _requests.Add(textureLoadingRequest);
-        }
-
         public bool IsAllLoaded()
         {
             for (var i = 0; i < _requests.Count; i++)

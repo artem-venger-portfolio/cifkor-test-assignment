@@ -81,7 +81,7 @@ namespace WebClient
                     continue;
                 }
 
-                _textureLoader.StartNew(iconURL);
+                _textureLoader.Load(iconURL);
             }
 
             while (_textureLoader.IsAllLoaded() == false)
