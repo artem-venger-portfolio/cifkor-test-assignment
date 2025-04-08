@@ -10,9 +10,9 @@ namespace WebClient
         private ScreenTypesAndInstance[] _screenTypesAndInstances;
         private ViewBase[] _screenViews;
 
-        public ScreensInstaller(GameObject screensContainer)
+        public ScreensInstaller(TabsSceneReferences sceneReferences)
         {
-            _screensContainer = screensContainer;
+            _screensContainer = sceneReferences.ScreensContainer;
         }
 
         public override void InstallBindings()

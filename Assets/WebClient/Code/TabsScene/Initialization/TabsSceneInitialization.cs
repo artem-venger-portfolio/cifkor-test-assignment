@@ -18,7 +18,7 @@ namespace WebClient
 
             var installers = new InstallerBase[]
             {
-                new ScreensInstaller(_sceneReferences.ScreensContainer),
+                new ScreensInstaller(_sceneReferences),
                 new TabsSceneInstaller(),
             };
             foreach (var currentInstaller in installers)
