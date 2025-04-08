@@ -13,6 +13,7 @@ namespace WebClient
         private UnityWebRequest _weatherRequest;
         private Coroutine _requestCoroutine;
         private bool _isDone;
+        private bool _isInProgress;
 
         public WeatherRequest(MonoBehaviourFunctions monoBehaviourFunctions, ITextureLoader textureLoader,
                               ITextureCache textureCache)
@@ -29,6 +30,11 @@ namespace WebClient
             _requestCoroutine = _monoBehaviourFunctions.RunCoroutine(GetRequestEnumerator());
         }
 
+        public bool IsInProgress()
+        {
+            return _isInProgress;
+        }
+
         public bool IsDone()
         {
             return _isDone;
@@ -43,6 +49,8 @@ namespace WebClient
         private IEnumerator GetRequestEnumerator()
         {
             _isDone = false;
+            _isInProgress = true;
+
             _weatherRequest = UnityWebRequest.Get(URL);
 
             yield return _weatherRequest.SendWebRequest();
@@ -51,6 +59,7 @@ namespace WebClient
             {
                 _requestCoroutine = null;
                 _isDone = true;
+                _isInProgress = false;
                 yield break;
             }
 
@@ -77,6 +86,7 @@ namespace WebClient
             _textureLoader.Finish();
             _requestCoroutine = null;
             _isDone = true;
+            _isInProgress = false;
         }
 
         private bool IsTextureLoadingOrLoaded(string url)
