@@ -12,6 +12,7 @@ namespace WebClient
         private readonly MonoBehaviourFunctions _monoBehaviourFunctions;
         private readonly List<UnityWebRequest> _textureLoadingRequest;
         private readonly Dictionary<string, Texture2D> _urlToTexture;
+        private readonly List<WeatherPeriod> _periods;
         private Coroutine _requestCoroutine;
 
         public WeatherScreenPresenter(WeatherScreenModel model, WeatherScreenViewBase view,
@@ -22,6 +23,7 @@ namespace WebClient
             _monoBehaviourFunctions = monoBehaviourFunctions;
             _textureLoadingRequest = new List<UnityWebRequest>();
             _urlToTexture = new Dictionary<string, Texture2D>();
+            _periods = new List<WeatherPeriod>();
 
             _model.IsOpenChanged += InOpenChangedEventHandler;
         }
@@ -76,7 +78,8 @@ namespace WebClient
         private IEnumerator DisplayWeather(string json)
         {
             var response = JsonUtility.FromJson<WeatherResponse>(json);
-            foreach (var currentPeriod in response.properties.periods)
+            var responsePeriods = response.properties.periods;
+            foreach (var currentPeriod in responsePeriods)
             {
                 var iconURL = currentPeriod.icon;
                 if (IsTextureLoadingOrLoaded(iconURL))
@@ -110,6 +113,16 @@ namespace WebClient
                 loadingRequest.Dispose();
             }
             _textureLoadingRequest.Clear();
+
+            _periods.Clear();
+            foreach (var currentResponsePeriod in responsePeriods)
+            {
+                var texture = _urlToTexture[currentResponsePeriod.icon];
+                var temperature = currentResponsePeriod.temperature;
+                var temperatureUnit = currentResponsePeriod.temperatureUnit;
+                var period = new WeatherPeriod(texture, temperature, temperatureUnit);
+                _periods.Add(period);
+            }
         }
 
         private bool IsAllTexturesLoaded()
