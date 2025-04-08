@@ -7,7 +7,14 @@ namespace WebClient
     [UsedImplicitly]
     public class TextureLoader : ITextureLoader
     {
-        private readonly List<UnityWebRequest> _requests = new();
+        private readonly List<UnityWebRequest> _requests;
+        private readonly ITextureCache _textureCache;
+
+        public TextureLoader(ITextureCache textureCache)
+        {
+            _textureCache = textureCache;
+            _requests = new List<UnityWebRequest>();
+        }
 
         public void StartNew(string url)
         {
@@ -35,6 +42,13 @@ namespace WebClient
         {
             foreach (var loadingRequest in _requests)
             {
+                if (loadingRequest.result == UnityWebRequest.Result.Success)
+                {
+                    var key = loadingRequest.url;
+                    var texture = DownloadHandlerTexture.GetContent(loadingRequest);
+                    _textureCache.Save(key, texture);
+                }
+
                 loadingRequest.Dispose();
             }
             _requests.Clear();
