@@ -6,15 +6,13 @@ namespace WebClient
     {
         private readonly NavigationPanelModel _model;
         private readonly NavigationPanelViewBase _view;
-        private readonly DogBreedsScreenModel _dogBreedsScreen;
         private readonly WeatherScreenModel _weatherScreen;
 
         public NavigationPanelPresenter(NavigationPanelModel model, NavigationPanelViewBase view,
-                                        DogBreedsScreenModel dogBreedsScreen, WeatherScreenModel weatherScreen)
+                                        WeatherScreenModel weatherScreen)
         {
             _model = model;
             _view = view;
-            _dogBreedsScreen = dogBreedsScreen;
             _weatherScreen = weatherScreen;
 
             _view.WeatherTabSelected += WeatherTabSelectedEventHandler;
