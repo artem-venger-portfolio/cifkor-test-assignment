@@ -11,14 +11,12 @@ namespace WebClient
         private readonly MonoBehaviourFunctions _monoBehaviourFunctions;
         private readonly Queue<IWebRequest> _requests = new();
         private readonly Queue<IWebRequest> _interimQueue = new();
-        private readonly IProjectLogger _logger;
         private Coroutine _handleRequestsCoroutine;
         private IWebRequest _currentRequest;
 
-        public RequestQueue(MonoBehaviourFunctions monoBehaviourFunctions, IProjectLogger logger)
+        public RequestQueue(MonoBehaviourFunctions monoBehaviourFunctions)
         {
             _monoBehaviourFunctions = monoBehaviourFunctions;
-            _logger = logger;
         }
 
         public void Add(IWebRequest request)
