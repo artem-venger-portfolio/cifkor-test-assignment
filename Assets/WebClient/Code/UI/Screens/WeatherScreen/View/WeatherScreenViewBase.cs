@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace WebClient
 {
-    public abstract class WeatherScreenViewBase : MonoBehaviour
+    public abstract class WeatherScreenViewBase : UnityUINavigationPanelTabViewBase
     {
         public abstract void Open();
         public abstract void Close();
