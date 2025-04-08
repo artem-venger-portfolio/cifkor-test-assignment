@@ -1,6 +1,8 @@
-﻿namespace WebClient
+﻿using UnityEngine;
+
+namespace WebClient
 {
-    public abstract class DogBreedsScreenViewBase : ViewBase
+    public abstract class DogBreedsScreenViewBase : MonoBehaviour
     {
     }
 }
