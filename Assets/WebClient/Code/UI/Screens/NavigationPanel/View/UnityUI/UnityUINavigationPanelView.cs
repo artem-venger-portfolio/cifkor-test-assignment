@@ -17,7 +17,12 @@ namespace WebClient
 
         private UnityUIWeatherScreenView _weatherTab;
 
-        public void AddTab(string tabName, UnityUINavigationPanelTabViewBase tab)
+        public void CreateTabs()
+        {
+            AddTab(tabName: "Weather", _weatherTab);
+        }
+
+        private void AddTab(string tabName, UnityUINavigationPanelTabViewBase tab)
         {
             tab.SetParent(_tabContainer);
             var toggle = Instantiate(_toggleTemplate, _toggleGroup.transform, worldPositionStays: false);
@@ -25,11 +30,6 @@ namespace WebClient
             toggle.SetToggleGroup(_toggleGroup);
             toggle.SetTab(tab);
             toggle.SubscribeToValueChange();
-        }
-
-        public void CreateTabs()
-        {
-            AddTab(tabName: "Weather", _weatherTab);
         }
 
         [Inject]
