@@ -8,7 +8,6 @@ namespace WebClient
     {
         private readonly WeatherScreenModel _model;
         private readonly IWeatherScreenView _view;
-        private Coroutine _requestCoroutine;
 
         public WeatherScreenPresenter(WeatherScreenModel model, IWeatherScreenView view)
         {
