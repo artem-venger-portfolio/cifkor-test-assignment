@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace WebClient
 {
-    public abstract class WeatherScreenViewBase : UnityUINavigationPanelTabViewBase
+    public abstract class WeatherScreenViewBase : UnityUINavigationPanelTabViewBase, IWeatherScreenView
     {
         public abstract void DisplayPeriods(IReadOnlyList<WeatherPeriod> periods);
     }
