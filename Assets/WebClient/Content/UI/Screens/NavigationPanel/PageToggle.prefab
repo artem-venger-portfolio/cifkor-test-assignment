@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 7036956678739900636}
   - component: {fileID: 6616063201476988915}
   - component: {fileID: 345914171468376838}
+  - component: {fileID: 5729303623959854252}
   m_Layer: 5
   m_Name: PageToggle
   m_TagString: Untagged
@@ -201,6 +202,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &5729303623959854252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4454806143563758948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b686f2482584531a43516dfa253c176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pageNameField: {fileID: 7028544780087970587}
 --- !u!1 &4704865877921809796
 GameObject:
   m_ObjectHideFlags: 0
