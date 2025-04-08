@@ -11,12 +11,15 @@ namespace WebClient
 
         [SerializeField]
         private ToggleGroup _toggleGroup;
-        
+
         [SerializeField]
         private Toggle _weatherToggle;
 
         [SerializeField]
         private Toggle _dogBreedsToggle;
+
+        [SerializeField]
+        private NavigationPanelToggle _toggleTemplate;
 
         private void Start()
         {
