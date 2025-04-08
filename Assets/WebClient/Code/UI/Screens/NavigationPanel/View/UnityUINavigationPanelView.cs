@@ -39,10 +39,6 @@ namespace WebClient
             tab.transform.SetParent(_tabContainer, false);
         }
 
-        public void AddTab(string pageName, GameObject tabView)
-        {
-        }
-
         private void WeatherToggleValueChanged(bool isOn)
         {
             if (isOn == false)
