@@ -38,7 +38,7 @@ namespace WebClient
             _screenTypesAndInstances = new ScreenTypesAndInstance[screenTypes.Length];
             for (var i = 0; i < screenTypes.Length; i++)
             {
-                _screenTypesAndInstances[i] = CreateScreenTypesAndInstance(screenTypes[i]);
+                _screenTypesAndInstances[i] = LinkScreenTypesWithViewInstance(screenTypes[i]);
             }
         }
 
@@ -47,7 +47,7 @@ namespace WebClient
             return _sceneReferences.ScreensContainer.GetComponentsInChildren<ViewBase>(includeInactive: true);
         }
 
-        private ScreenTypesAndInstance CreateScreenTypesAndInstance(MVPTypesGroup group)
+        private ScreenTypesAndInstance LinkScreenTypesWithViewInstance(MVPTypesGroup group)
         {
             var viewType = group.View;
             var viewInstance = _screenViews.First(v => viewType.IsAssignableFrom(v.GetType()));
