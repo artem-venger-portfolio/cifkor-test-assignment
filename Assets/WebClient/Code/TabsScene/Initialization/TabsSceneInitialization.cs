@@ -21,8 +21,17 @@ namespace WebClient
             FindAndRecordScreenInstances();
 
             _sceneContext = SceneContext.Create();
-            var sceneInstaller = new TabsSceneInstaller();
-            _sceneContext.AddNormalInstaller(sceneInstaller);
+
+            var installers = new InstallerBase[]
+            {
+                new ScreensInstaller(_sceneReferences.ScreensContainer),
+                new TabsSceneInstaller(),
+            };
+            foreach (var currentInstaller in installers)
+            {
+                _sceneContext.AddNormalInstaller(currentInstaller);
+            }
+
             _sceneContext.Run();
         }
 
