@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+using Zenject;
 
 namespace WebClient
 {
@@ -105,6 +106,10 @@ namespace WebClient
         private bool IsTextureLoadingOrLoaded(string url)
         {
             return _textureLoader.IsLoading(url) || _textureCache.Contains(url);
+        }
+
+        public class Factory : PlaceholderFactory<WeatherRequest>
+        {
         }
     }
 }

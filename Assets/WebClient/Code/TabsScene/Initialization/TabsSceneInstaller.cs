@@ -63,6 +63,18 @@ namespace WebClient
             Container.Bind<WeatherScreenPresenter>()
                      .AsSingle()
                      .NonLazy();
+
+            Container.BindFactory<WeatherRequest, WeatherRequest.Factory>()
+                     .AsSingle()
+                     .NonLazy();
+
+            Container.Bind<TextureLoader>()
+                     .AsTransient()
+                     .NonLazy();
+
+            Container.Bind<ITextureCache>()
+                     .To<TextureCache>()
+                     .NonLazy();
         }
     }
 }
