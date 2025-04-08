@@ -6,6 +6,11 @@ namespace WebClient
     {
         public override void InstallBindings()
         {
+            Container.Bind<MonoBehaviourFunctions>()
+                     .FromNewComponentOnNewGameObject()
+                     .WithGameObjectName(nameof(MonoBehaviourFunctions))
+                     .AsSingle()
+                     .NonLazy();
         }
     }
 }
