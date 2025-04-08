@@ -8,6 +8,9 @@ namespace WebClient
     {
         [SerializeField]
         private TabToName[] _tabToNameCollection;
+
+        [SerializeField]
+        private ToggleGroup _toggleGroup;
         
         [SerializeField]
         private Toggle _weatherToggle;
