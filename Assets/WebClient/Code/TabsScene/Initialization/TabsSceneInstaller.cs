@@ -13,6 +13,11 @@ namespace WebClient
 
         public override void InstallBindings()
         {
+            Container.Bind<MonoBehaviourFunctions>()
+                     .FromNewComponentOnNewGameObject()
+                     .AsSingle()
+                     .NonLazy();
+
             InstallNavigationPanel();
         }
 
