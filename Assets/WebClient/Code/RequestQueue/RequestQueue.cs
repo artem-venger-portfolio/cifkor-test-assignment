@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Networking;
 
 namespace WebClient
 {
@@ -10,11 +9,10 @@ namespace WebClient
     public class RequestQueue : IRequestQueue
     {
         private readonly MonoBehaviourFunctions _monoBehaviourFunctions;
-        private readonly Queue<UnityWebRequest> _requests = new();
-        private readonly Queue<IWebRequest> _requestsInterfaces = new();
+        private readonly Queue<IWebRequest> _requests = new();
         private readonly IProjectLogger _logger;
         private Coroutine _handleRequestsCoroutine;
-        private UnityWebRequest _currentRequest;
+        private IWebRequest _currentRequest;
 
         public RequestQueue(MonoBehaviourFunctions monoBehaviourFunctions, IProjectLogger logger)
         {
@@ -22,47 +20,36 @@ namespace WebClient
             _logger = logger;
         }
 
-        public void Add(UnityWebRequest request)
+        public void Add(IWebRequest request)
         {
             _requests.Enqueue(request);
         }
 
-        public void Add(IWebRequest request)
-        {
-            _requestsInterfaces.Enqueue(request);
-        }
-
         public void Start()
         {
-            _handleRequestsCoroutine = _monoBehaviourFunctions.RunCoroutine(GetHandleRequestsEnumerator());
+            _handleRequestsCoroutine = _monoBehaviourFunctions.RunCoroutine(GetHandeRequestsInterfaceEnumerator());
         }
 
-        private IEnumerator GetHandleRequestsEnumerator()
+        private IEnumerator GetHandeRequestsInterfaceEnumerator()
         {
             while (true)
             {
-                yield return new WaitUntil(HasRequests);
+                yield return new WaitUntil(HasRequestsInterfaces);
 
                 _currentRequest = _requests.Dequeue();
+                _currentRequest.Send();
 
-                yield return _currentRequest.SendWebRequest();
-
-                var result = _currentRequest.result;
-                switch (result)
+                while (_currentRequest.IsDone() == false)
                 {
-                    case UnityWebRequest.Result.ConnectionError:
-                    case UnityWebRequest.Result.DataProcessingError:
-                    case UnityWebRequest.Result.ProtocolError:
-                        _logger.LogError(result.ToString());
-                        break;
-                    case UnityWebRequest.Result.Success:
-                        _logger.LogInfo(result.ToString());
-                        break;
+                    yield return null;
                 }
+
+                _currentRequest.Finish();
+                _currentRequest = null;
             }
         }
 
-        private bool HasRequests()
+        private bool HasRequestsInterfaces()
         {
             return _requests.Count > 0;
         }
