@@ -18,6 +18,11 @@ namespace WebClient
                      .AsSingle()
                      .NonLazy();
 
+            Container.Bind<IProjectLogger>()
+                     .To<UnityConsoleLogger>()
+                     .AsSingle()
+                     .NonLazy();
+
             InstallNavigationPanel();
             InstallWeatherTab();
         }
