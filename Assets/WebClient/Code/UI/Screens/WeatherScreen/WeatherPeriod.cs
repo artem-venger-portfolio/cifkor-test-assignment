@@ -11,8 +11,8 @@ namespace WebClient
             Unit = unit;
         }
 
-        private Texture Texture { get; }
-        private float Temperature { get; }
-        private string Unit { get; }
+        public Texture Texture { get; }
+        public float Temperature { get; }
+        public string Unit { get; }
     }
 }
