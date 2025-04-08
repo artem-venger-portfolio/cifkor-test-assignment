@@ -2,7 +2,7 @@
 
 namespace WebClient
 {
-    public abstract class UnityUINavigationPanelTabViewBase : MonoBehaviour, INavigationPanelTabView
+    public abstract class UnityUINavigationPanelTabViewBase : MonoBehaviour
     {
         public void Show()
         {
