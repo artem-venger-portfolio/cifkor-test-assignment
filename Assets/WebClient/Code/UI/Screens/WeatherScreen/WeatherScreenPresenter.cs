@@ -107,7 +107,9 @@ namespace WebClient
                     _urlToTexture.Add(url, texture);
                     Debug.Log($"{url} loaded");
                 }
+                loadingRequest.Dispose();
             }
+            _textureLoadingRequest.Clear();
         }
 
         private bool IsAllTexturesLoaded()
