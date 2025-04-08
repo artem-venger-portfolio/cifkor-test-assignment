@@ -12,6 +12,11 @@ namespace WebClient
             _keyToTexture.Add(key, texture);
         }
 
+        public Texture2D Get(string key)
+        {
+            return _keyToTexture[key];
+        }
+
         public bool Contains(string key)
         {
             return _keyToTexture.ContainsKey(key);
