@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using Zenject;
+﻿using Zenject;
 
 namespace WebClient
 {
@@ -28,8 +27,16 @@ namespace WebClient
 
             _sceneContext.Run();
 
-            var navigationPanelViewFromContainer = _sceneContext.Container.Resolve<INavigationPanelView>();
+            var navigationPanelViewFromContainer = Resolve<INavigationPanelView>();
             navigationPanelViewFromContainer.CreateTabs();
+
+            var requestQueue = Resolve<IRequestQueue>();
+            requestQueue.Start();
+        }
+
+        private T Resolve<T>()
+        {
+            return _sceneContext.Container.Resolve<T>();
         }
     }
 }
