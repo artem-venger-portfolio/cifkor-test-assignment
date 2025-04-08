@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using UnityEngine;
 using Zenject;
 
 namespace WebClient
@@ -7,14 +6,11 @@ namespace WebClient
     public class ScreensInstaller : InstallerBase
     {
         private readonly TabsSceneReferences _tabsSceneReferences;
-        private readonly GameObject _screensContainer;
         private ScreenTypesAndInstance[] _screenTypesAndInstances;
-        private ViewBase[] _screenViews;
 
         public ScreensInstaller(TabsSceneReferences sceneReferences)
         {
             _tabsSceneReferences = sceneReferences;
-            _screensContainer = _tabsSceneReferences.ScreensContainer;
         }
 
         public override void InstallBindings()
@@ -40,8 +36,6 @@ namespace WebClient
 
         private void GetTypesAndInstancesForInstalling()
         {
-            _screenViews = FindScreenViews<ViewBase>();
-
             var screenTypes = new[]
             {
                 MVPTypesGroup.Create<NavigationPanelModel, NavigationPanelViewBase, NavigationPanelPresenter>(),
@@ -56,16 +50,11 @@ namespace WebClient
             }
         }
 
-        private T[] FindScreenViews<T>()
-        {
-            return _screensContainer.GetComponentsInChildren<T>(includeInactive: true);
-        }
-
         private ScreenTypesAndInstance LinkScreenTypesWithViewInstance(MVPTypesGroup group)
         {
             var viewType = group.View;
-            var viewInstance = _screenViews.First(v => viewType.IsAssignableFrom(v.GetType()));
-            var viewInstanceComponent = _tabsSceneReferences.ScreenViews.First(v => viewType.IsAssignableFrom(v.GetType()));
+            var viewInstance = _tabsSceneReferences.ScreenViews
+                                                   .First(v => viewType.IsAssignableFrom(v.GetType()));
             return new ScreenTypesAndInstance(group.Model, viewType, group.Presenter, viewInstance);
         }
     }
