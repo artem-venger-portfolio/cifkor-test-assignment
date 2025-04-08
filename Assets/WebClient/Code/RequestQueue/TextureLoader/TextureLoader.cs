@@ -45,21 +45,6 @@ namespace WebClient
             return _requests.Count > 0;
         }
 
-        public bool IsAllLoaded()
-        {
-            for (var i = 0; i < _requests.Count; i++)
-            {
-                if (_requests[i].isDone)
-                {
-                    continue;
-                }
-
-                return false;
-            }
-
-            return true;
-        }
-
         public void Finish()
         {
             foreach (var loadingRequest in _requests)
