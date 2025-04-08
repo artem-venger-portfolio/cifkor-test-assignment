@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using Zenject;
@@ -20,10 +21,13 @@ namespace WebClient
                               ITextureCache textureCache, IProjectLogger logger)
         {
             _monoBehaviourFunctions = monoBehaviourFunctions;
+            Result = new List<WeatherPeriod>();
             _textureLoader = textureLoader;
             _textureCache = textureCache;
             _logger = logger;
         }
+
+        public List<WeatherPeriod> Result { get; }
 
         public RequestType Type => RequestType.Weather;
 
