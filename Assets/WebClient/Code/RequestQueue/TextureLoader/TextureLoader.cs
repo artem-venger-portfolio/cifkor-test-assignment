@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using JetBrains.Annotations;
+using UnityEngine;
 using UnityEngine.Networking;
 
 namespace WebClient
@@ -7,33 +10,37 @@ namespace WebClient
     [UsedImplicitly]
     public class TextureLoader : ITextureLoader
     {
+        private readonly MonoBehaviourFunctions _monoBehaviourFunctions;
         private readonly List<UnityWebRequest> _requests;
         private readonly ITextureCache _textureCache;
+        private Coroutine _workingCoroutine;
 
-        public TextureLoader(ITextureCache textureCache)
+        public TextureLoader(MonoBehaviourFunctions monoBehaviourFunctions, ITextureCache textureCache)
         {
+            _monoBehaviourFunctions = monoBehaviourFunctions;
             _textureCache = textureCache;
             _requests = new List<UnityWebRequest>();
         }
 
         public void Start()
         {
-            throw new System.NotImplementedException();
+            _workingCoroutine = _monoBehaviourFunctions.RunCoroutine(GetWorkingEnumerator());
         }
 
         public void Stop()
         {
-            throw new System.NotImplementedException();
+            _monoBehaviourFunctions.KillCoroutine(_workingCoroutine);
+            _workingCoroutine = null;
         }
 
         public void Load(string url)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public bool IsLoading()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public void StartNew(string url)
@@ -85,6 +92,14 @@ namespace WebClient
             }
 
             return false;
+        }
+
+        private IEnumerator GetWorkingEnumerator()
+        {
+            while (true)
+            {
+                yield return new WaitUntil(IsLoading);
+            }
         }
     }
 }
