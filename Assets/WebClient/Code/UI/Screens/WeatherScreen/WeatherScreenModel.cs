@@ -40,6 +40,7 @@ namespace WebClient
         {
             LogInfo(nameof(StopUpdatingPeriods));
             _monoBehaviourFunctions.KillCoroutine(_requestCoroutine);
+            _requestQueue.Interrupt(RequestType.Weather);
         }
 
         private IEnumerator GetRequestCoroutine()
