@@ -7,12 +7,12 @@ namespace WebClient
     public class TabsSceneReferences
     {
         [SerializeField]
-        private NavigationPanelViewBase _navigationPanelView;
+        private UnityUINavigationPanelView _navigationPanelView;
 
         [SerializeField]
         private UnityUIWeatherScreenView _weatherTabViewTemplate;
 
-        public NavigationPanelViewBase NavigationPanelView => _navigationPanelView;
+        public UnityUINavigationPanelView NavigationPanelView => _navigationPanelView;
 
         public UnityUIWeatherScreenView WeatherTabViewTemplate => _weatherTabViewTemplate;
     }
