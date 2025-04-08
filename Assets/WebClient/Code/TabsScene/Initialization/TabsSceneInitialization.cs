@@ -33,7 +33,6 @@ namespace WebClient
 
             var installers = new InstallerBase[]
             {
-                new TabsSceneInstaller(),
             };
             foreach (var currentInstaller in installers)
             {
