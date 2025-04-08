@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -13,19 +14,21 @@ namespace WebClient
         private readonly TextureLoader _textureLoader;
         private readonly ITextureCache _textureCache;
         private readonly IProjectLogger _logger;
+        private readonly Action<WeatherRequest> _completed;
         private WeatherResponsePeriod[] _responsePeriods;
         private UnityWebRequest _weatherRequest;
         private Coroutine _requestCoroutine;
         private bool _isInProgress;
 
         public WeatherRequest(MonoBehaviourFunctions monoBehaviourFunctions, TextureLoader textureLoader,
-                              ITextureCache textureCache, IProjectLogger logger)
+                              ITextureCache textureCache, IProjectLogger logger, Action<WeatherRequest> completed)
         {
             _monoBehaviourFunctions = monoBehaviourFunctions;
             Result = new List<WeatherPeriod>();
             _textureLoader = textureLoader;
             _textureCache = textureCache;
             _logger = logger;
+            _completed = completed;
         }
 
         public List<WeatherPeriod> Result { get; }
@@ -108,6 +111,8 @@ namespace WebClient
 
             _requestCoroutine = null;
             _isInProgress = false;
+
+            _completed(this);
         }
 
         private bool IsTextureLoadingOrLoaded(string url)
@@ -128,7 +133,7 @@ namespace WebClient
             }
         }
 
-        public class Factory : PlaceholderFactory<WeatherRequest>
+        public class Factory : PlaceholderFactory<Action<WeatherRequest>, WeatherRequest>
         {
         }
     }

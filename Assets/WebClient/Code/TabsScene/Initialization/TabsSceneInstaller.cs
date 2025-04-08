@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using System;
+using Zenject;
 
 namespace WebClient
 {
@@ -64,7 +65,7 @@ namespace WebClient
                      .AsSingle()
                      .NonLazy();
 
-            Container.BindFactory<WeatherRequest, WeatherRequest.Factory>()
+            Container.BindFactory<Action<WeatherRequest>, WeatherRequest, WeatherRequest.Factory>()
                      .AsSingle()
                      .NonLazy();
 
