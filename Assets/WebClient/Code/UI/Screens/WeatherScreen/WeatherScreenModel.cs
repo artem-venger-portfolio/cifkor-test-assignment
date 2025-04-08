@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -34,6 +35,8 @@ namespace WebClient
         }
 
         public IReadOnlyList<WeatherPeriod> Periods => _periods;
+
+        public event Action PeriodsUpdated;
 
         private IEnumerator GetRequestCoroutine()
         {
@@ -116,6 +119,8 @@ namespace WebClient
                 var period = new WeatherPeriod(texture, temperature, temperatureUnit);
                 _periods.Add(period);
             }
+
+            PeriodsUpdated?.Invoke();
         }
 
         private bool IsAllTexturesLoaded()
