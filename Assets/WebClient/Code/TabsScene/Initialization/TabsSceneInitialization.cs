@@ -7,7 +7,6 @@ namespace WebClient
     {
         private readonly TabsSceneReferences _sceneReferences;
 
-        private MVPTypesGroup[] _screenTypes;
         private ScreenTypesAndInstance[] _screenTypesAndInstances;
         private ViewBase[] _screenViews;
         private SceneContext _sceneContext;
@@ -30,16 +29,16 @@ namespace WebClient
         private void FindAndRecordScreenInstances()
         {
             _screenViews = _sceneReferences.ScreensContainer.GetComponentsInChildren<ViewBase>(includeInactive: true);
-            
-            _screenTypes = new[]
+
+            var screenTypes = new[]
             {
                 MVPTypesGroup.Create<NavigationPanelModel, NavigationPanelViewBase, NavigationPanelPresenter>(),
             };
 
-            _screenTypesAndInstances = new ScreenTypesAndInstance[_screenTypes.Length];
-            for (var i = 0; i < _screenTypes.Length; i++)
+            _screenTypesAndInstances = new ScreenTypesAndInstance[screenTypes.Length];
+            for (var i = 0; i < screenTypes.Length; i++)
             {
-                _screenTypesAndInstances[i] = CreateScreenTypesAndInstance(_screenTypes[i]);
+                _screenTypesAndInstances[i] = CreateScreenTypesAndInstance(screenTypes[i]);
             }
         }
 
