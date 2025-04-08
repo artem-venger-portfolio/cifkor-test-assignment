@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 namespace WebClient
 {
     [UsedImplicitly]
-    public class TextureLoader : ITextureLoader
+    public class TextureLoader
     {
         private readonly MonoBehaviourFunctions _monoBehaviourFunctions;
         private readonly List<UnityWebRequest> _requests;

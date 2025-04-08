@@ -8,14 +8,14 @@ namespace WebClient
     {
         private const string URL = "https://api.weather.gov/gridpoints/TOP/32,81/forecast";
         private readonly MonoBehaviourFunctions _monoBehaviourFunctions;
-        private readonly ITextureLoader _textureLoader;
+        private readonly TextureLoader _textureLoader;
         private readonly ITextureCache _textureCache;
         private readonly IProjectLogger _logger;
         private UnityWebRequest _weatherRequest;
         private Coroutine _requestCoroutine;
         private bool _isInProgress;
 
-        public WeatherRequest(MonoBehaviourFunctions monoBehaviourFunctions, ITextureLoader textureLoader,
+        public WeatherRequest(MonoBehaviourFunctions monoBehaviourFunctions, TextureLoader textureLoader,
                               ITextureCache textureCache, IProjectLogger logger)
         {
             _monoBehaviourFunctions = monoBehaviourFunctions;
