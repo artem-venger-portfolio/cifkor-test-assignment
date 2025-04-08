@@ -35,7 +35,9 @@ namespace WebClient
 
         public void Load(string url)
         {
-            throw new NotImplementedException();
+            var textureLoadingRequest = UnityWebRequestTexture.GetTexture(url);
+            textureLoadingRequest.SendWebRequest();
+            _requests.Add(textureLoadingRequest);
         }
 
         public bool IsLoading()
