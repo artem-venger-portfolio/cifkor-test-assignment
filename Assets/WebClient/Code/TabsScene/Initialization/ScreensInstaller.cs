@@ -38,7 +38,7 @@ namespace WebClient
 
         private void GetTypesAndInstancesForInstalling()
         {
-            _screenViews = FindScreenViews();
+            _screenViews = FindScreenViews<ViewBase>();
 
             var screenTypes = new[]
             {
@@ -54,9 +54,9 @@ namespace WebClient
             }
         }
 
-        private ViewBase[] FindScreenViews()
+        private T[] FindScreenViews<T>()
         {
-            return _screensContainer.GetComponentsInChildren<ViewBase>(includeInactive: true);
+            return _screensContainer.GetComponentsInChildren<T>(includeInactive: true);
         }
 
         private ScreenTypesAndInstance LinkScreenTypesWithViewInstance(MVPTypesGroup group)
