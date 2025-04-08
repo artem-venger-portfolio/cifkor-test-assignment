@@ -7,6 +7,11 @@ namespace WebClient
     [UsedImplicitly]
     public class RequestQueue : IRequestQueue
     {
-        private Queue<UnityWebRequest> _requests = new();
+        private readonly Queue<UnityWebRequest> _requests = new();
+
+        public void Add(UnityWebRequest request)
+        {
+            _requests.Enqueue(request);
+        }
     }
 }
