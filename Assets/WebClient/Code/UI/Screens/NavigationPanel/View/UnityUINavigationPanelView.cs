@@ -37,6 +37,9 @@ namespace WebClient
         public override void AddTab(string tabName, GameObject tab)
         {
             tab.transform.SetParent(_tabContainer, worldPositionStays: false);
+            var toggle = Instantiate(_toggleTemplate, _toggleGroup.transform, worldPositionStays: false);
+            toggle.SetPageName(tabName);
+            toggle.SetToggleGroup(_toggleGroup);
         }
 
         private void WeatherToggleValueChanged(bool isOn)
