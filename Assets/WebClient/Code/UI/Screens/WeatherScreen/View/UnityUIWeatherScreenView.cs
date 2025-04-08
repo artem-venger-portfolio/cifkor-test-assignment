@@ -35,7 +35,8 @@ namespace WebClient
 
                 var currentWeatherEntry = _entries[i];
                 currentWeatherEntry.SetTexture(currentPeriodData.Texture);
-                currentWeatherEntry.SetTemperature(currentPeriodData.Temperature, currentPeriodData.Unit);
+                currentWeatherEntry.SetTemperature(currentPeriodData.Name, currentPeriodData.Temperature,
+                                                   currentPeriodData.Unit);
                 currentWeatherEntry.gameObject.SetActive(value: true);
             }
         }

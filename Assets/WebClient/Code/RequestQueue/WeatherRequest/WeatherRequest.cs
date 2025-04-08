@@ -125,10 +125,11 @@ namespace WebClient
             Result.Clear();
             foreach (var currentResponsePeriod in _responsePeriods)
             {
+                var name = currentResponsePeriod.name;
                 var texture = _textureCache.Get(currentResponsePeriod.icon);
                 var temperature = currentResponsePeriod.temperature;
                 var temperatureUnit = currentResponsePeriod.temperatureUnit;
-                var period = new WeatherPeriod(texture, temperature, temperatureUnit);
+                var period = new WeatherPeriod(name, texture, temperature, temperatureUnit);
                 Result.Add(period);
             }
         }

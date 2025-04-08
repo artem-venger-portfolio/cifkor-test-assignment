@@ -17,9 +17,9 @@ namespace WebClient
             _image.texture = texture;
         }
 
-        public void SetTemperature(float value, string unit)
+        public void SetTemperature(string periodName, float value, string unit)
         {
-            _temperatureField.text = value + unit;
+            _temperatureField.text = $"{periodName} - {value}{unit}";
         }
     }
 }
