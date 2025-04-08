@@ -15,20 +15,7 @@ namespace WebClient
             _model = model;
             _view = view;
 
-            _model.IsOpenChanged += InOpenChangedEventHandler;
             _model.PeriodsUpdated += PeriodsUpdatedEventHandler;
-        }
-
-        private void InOpenChangedEventHandler(bool isOpen)
-        {
-            if (isOpen)
-            {
-                _view.Open();
-            }
-            else
-            {
-                _view.Close();
-            }
         }
 
         private void PeriodsUpdatedEventHandler()
