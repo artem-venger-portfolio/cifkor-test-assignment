@@ -53,5 +53,18 @@ namespace WebClient
             }
             _requests.Clear();
         }
+
+        public bool IsLoading(string url)
+        {
+            foreach (var currentRequest in _requests)
+            {
+                if (currentRequest.url == url)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }
