@@ -40,6 +40,7 @@ namespace WebClient
             var toggle = Instantiate(_toggleTemplate, _toggleGroup.transform, worldPositionStays: false);
             toggle.SetPageName(tabName);
             toggle.SetToggleGroup(_toggleGroup);
+            toggle.SetTab(tab);
         }
 
         private void WeatherToggleValueChanged(bool isOn)

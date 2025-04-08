@@ -12,6 +12,8 @@ namespace WebClient
         [SerializeField]
         private Toggle _toggle;
 
+        private UnityUINavigationPanelTabViewBase _tab;
+
         public void SetPageName(string pageName)
         {
             _pageNameField.text = pageName;
@@ -20,6 +22,11 @@ namespace WebClient
         public void SetToggleGroup(ToggleGroup toggleGroup)
         {
             _toggle.group = toggleGroup;
+        }
+
+        public void SetTab(UnityUINavigationPanelTabViewBase tab)
+        {
+            _tab = tab;
         }
     }
 }
