@@ -11,6 +11,7 @@ namespace WebClient
     {
         private readonly MonoBehaviourFunctions _monoBehaviourFunctions;
         private readonly Queue<UnityWebRequest> _requests = new();
+        private readonly Queue<IWebRequest> _requestsInterfaces = new();
         private readonly IProjectLogger _logger;
         private Coroutine _handleRequestsCoroutine;
         private UnityWebRequest _currentRequest;
@@ -24,6 +25,11 @@ namespace WebClient
         public void Add(UnityWebRequest request)
         {
             _requests.Enqueue(request);
+        }
+
+        public void Add(IWebRequest request)
+        {
+            _requestsInterfaces.Enqueue(request);
         }
 
         public void Start()
