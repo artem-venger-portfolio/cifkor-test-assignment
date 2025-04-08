@@ -40,12 +40,12 @@ namespace WebClient
             }
         }
 
-        private void OnEnable()
+        protected override void OnShow()
         {
             Shown?.Invoke();
         }
 
-        private void OnDisable()
+        protected override void OnHide()
         {
             Hidden?.Invoke();
         }
