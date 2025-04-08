@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace WebClient
 {
-    public sealed class UnityUINavigationPanelView : NavigationPanelViewBase
+    public sealed class UnityUINavigationPanelView : MonoBehaviour, INavigationPanelView
     {
         [SerializeField]
         private ToggleGroup _toggleGroup;
@@ -14,7 +14,7 @@ namespace WebClient
         [SerializeField]
         private Transform _tabContainer;
 
-        public override void AddTab(string tabName, UnityUINavigationPanelTabViewBase tab)
+        public void AddTab(string tabName, UnityUINavigationPanelTabViewBase tab)
         {
             tab.SetParent(_tabContainer);
             var toggle = Instantiate(_toggleTemplate, _toggleGroup.transform, worldPositionStays: false);
