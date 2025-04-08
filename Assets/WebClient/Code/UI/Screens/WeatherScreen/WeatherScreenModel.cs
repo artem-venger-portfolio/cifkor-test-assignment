@@ -8,7 +8,7 @@ using UnityEngine.Networking;
 namespace WebClient
 {
     [UsedImplicitly]
-    public class WeatherScreenModel : TabModelBase
+    public class WeatherScreenModel : NavigationPanelTabModelBase
     {
         private readonly MonoBehaviourFunctions _monoBehaviourFunctions;
         private readonly List<UnityWebRequest> _textureLoadingRequest;
