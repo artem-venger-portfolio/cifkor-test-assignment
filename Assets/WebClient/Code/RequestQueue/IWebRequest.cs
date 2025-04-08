@@ -2,9 +2,10 @@
 
 namespace WebClient
 {
-    public interface IWebRequest : IDisposable
+    public interface IWebRequest
     {
         void Send();
         bool IsDone();
+        void Finish();
     }
 }
