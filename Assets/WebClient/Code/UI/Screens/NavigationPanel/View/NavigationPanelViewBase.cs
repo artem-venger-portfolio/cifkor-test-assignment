@@ -7,5 +7,6 @@ namespace WebClient
     {
         public abstract event Action WeatherTabSelected;
         public abstract event Action DogBreedsTabSelected;
+        public abstract void AddTab(GameObject tab);
     }
 }

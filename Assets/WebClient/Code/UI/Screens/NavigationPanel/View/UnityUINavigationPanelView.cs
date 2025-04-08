@@ -31,6 +31,11 @@ namespace WebClient
 
         public override event Action DogBreedsTabSelected;
 
+        public override void AddTab(GameObject tab)
+        {
+            tab.transform.SetParent(_toggleGroup.transform, false);
+        }
+
         public void AddTab(string pageName, GameObject tabView)
         {
         }
