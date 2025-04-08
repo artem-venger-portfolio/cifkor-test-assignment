@@ -39,7 +39,7 @@ namespace WebClient
         {
             while (true)
             {
-                yield return new WaitUntil(HasRequestsInterfaces);
+                yield return new WaitUntil(HasRequests);
 
                 _currentRequest = _requests.Dequeue();
                 _currentRequest.Send();
@@ -53,7 +53,7 @@ namespace WebClient
             }
         }
 
-        private bool HasRequestsInterfaces()
+        private bool HasRequests()
         {
             return _requests.Count > 0;
         }
