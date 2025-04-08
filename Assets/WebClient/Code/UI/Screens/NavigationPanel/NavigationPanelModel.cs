@@ -7,14 +7,14 @@ namespace WebClient
     [UsedImplicitly]
     public class NavigationPanelModel
     {
-        private readonly List<string> _tabs = new();
+        private readonly List<NavigationPanelTabModelBase> _tabs = new();
 
-        public event Action<string> TabAdded;
+        public event Action<NavigationPanelTabModelBase> TabAdded;
 
-        public void AddTab(string name)
+        public void AddTab(NavigationPanelTabModelBase model)
         {
-            _tabs.Add(name);
-            TabAdded?.Invoke(name);
+            _tabs.Add(model);
+            TabAdded?.Invoke(model);
         }
     }
 }
