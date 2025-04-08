@@ -40,6 +40,9 @@ namespace WebClient
             }
 
             _sceneContext.Run();
+
+            var navigationPanelViewFromContainer = _sceneContext.Container.Resolve<INavigationPanelView>();
+            navigationPanelViewFromContainer.CreateTabs();
         }
     }
 }
