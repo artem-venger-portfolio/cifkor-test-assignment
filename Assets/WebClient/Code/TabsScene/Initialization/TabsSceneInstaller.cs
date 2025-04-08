@@ -75,6 +75,7 @@ namespace WebClient
 
             Container.Bind<ITextureCache>()
                      .To<TextureCache>()
+                     .AsSingle()
                      .NonLazy();
         }
     }
