@@ -19,7 +19,6 @@ namespace WebClient
 
         public void Perform()
         {
-            CreateCollectionOfScreenTypes();
             FindAndRecordScreenInstances();
 
             _sceneContext = SceneContext.Create();
@@ -28,17 +27,14 @@ namespace WebClient
             _sceneContext.Run();
         }
 
-        private void CreateCollectionOfScreenTypes()
+        private void FindAndRecordScreenInstances()
         {
+            _screenViews = _sceneReferences.ScreensContainer.GetComponentsInChildren<ViewBase>(includeInactive: true);
+            
             _screenTypes = new[]
             {
                 MVPTypesGroup.Create<NavigationPanelModel, NavigationPanelViewBase, NavigationPanelPresenter>(),
             };
-        }
-
-        private void FindAndRecordScreenInstances()
-        {
-            _screenViews = _sceneReferences.ScreensContainer.GetComponentsInChildren<ViewBase>(includeInactive: true);
 
             _screenTypesAndInstances = new ScreenTypesAndInstance[_screenTypes.Length];
             for (var i = 0; i < _screenTypes.Length; i++)
