@@ -63,7 +63,7 @@ namespace WebClient
 
             if (_weatherRequest.result != UnityWebRequest.Result.Success)
             {
-                _logger.LogError("WeatherRequest failed!");
+                _logger.LogError(message: "WeatherRequest failed!");
                 _requestCoroutine = null;
                 _isInProgress = false;
                 yield break;
@@ -89,7 +89,6 @@ namespace WebClient
                 yield return null;
             }
 
-            _textureLoader.Finish();
             _requestCoroutine = null;
             _isInProgress = false;
         }

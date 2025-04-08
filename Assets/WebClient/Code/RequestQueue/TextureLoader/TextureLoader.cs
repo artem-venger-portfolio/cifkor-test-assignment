@@ -44,22 +44,6 @@ namespace WebClient
             return _requests.Count > 0;
         }
 
-        public void Finish()
-        {
-            foreach (var loadingRequest in _requests)
-            {
-                if (loadingRequest.result == UnityWebRequest.Result.Success)
-                {
-                    var key = loadingRequest.url;
-                    var texture = DownloadHandlerTexture.GetContent(loadingRequest);
-                    _textureCache.Save(key, texture);
-                }
-
-                loadingRequest.Dispose();
-            }
-            _requests.Clear();
-        }
-
         public bool IsLoading(string url)
         {
             foreach (var currentRequest in _requests)
