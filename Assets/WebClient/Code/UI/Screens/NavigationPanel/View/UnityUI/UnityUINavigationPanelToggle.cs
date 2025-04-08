@@ -34,6 +34,7 @@ namespace WebClient
         public void SubscribeToValueChange()
         {
             _lastValue = _toggle.isOn;
+            InvokeShowOrHide();
             _toggle.onValueChanged.AddListener(ValueChangedEventHandler);
         }
 
@@ -45,6 +46,11 @@ namespace WebClient
             }
             _lastValue = isOn;
 
+            InvokeShowOrHide();
+        }
+
+        private void InvokeShowOrHide()
+        {
             if (_lastValue)
             {
                 _tab.Show();
