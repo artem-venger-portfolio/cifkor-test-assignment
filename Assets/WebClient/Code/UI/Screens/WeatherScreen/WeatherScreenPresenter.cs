@@ -7,10 +7,10 @@ namespace WebClient
     public class WeatherScreenPresenter
     {
         private readonly WeatherScreenModel _model;
-        private readonly WeatherScreenViewBase _view;
+        private readonly IWeatherScreenView _view;
         private Coroutine _requestCoroutine;
 
-        public WeatherScreenPresenter(WeatherScreenModel model, WeatherScreenViewBase view)
+        public WeatherScreenPresenter(WeatherScreenModel model, IWeatherScreenView view)
         {
             _model = model;
             _view = view;
