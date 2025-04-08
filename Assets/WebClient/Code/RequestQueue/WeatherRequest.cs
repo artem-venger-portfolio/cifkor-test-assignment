@@ -35,6 +35,23 @@ namespace WebClient
             return _isInProgress;
         }
 
+        public void Interrupt()
+        {
+            if (IsInProgress() == false)
+            {
+                return;
+            }
+
+            if (_requestCoroutine != null)
+            {
+                _monoBehaviourFunctions.KillCoroutine(_requestCoroutine);
+                _requestCoroutine = null;
+            }
+
+            _weatherRequest.Dispose();
+            _weatherRequest = null;
+        }
+
         public bool IsDone()
         {
             return _isDone;
