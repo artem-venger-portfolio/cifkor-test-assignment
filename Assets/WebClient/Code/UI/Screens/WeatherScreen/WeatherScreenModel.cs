@@ -24,6 +24,20 @@ namespace WebClient
             _periods = new List<WeatherPeriod>();
         }
 
+        public IReadOnlyList<WeatherPeriod> Periods => _periods;
+
+        public event Action PeriodsUpdated;
+
+        public void StartUpdatingPeriods()
+        {
+            _requestCoroutine = _monoBehaviourFunctions.RunCoroutine(GetRequestCoroutine());
+        }
+
+        public void StopUpdatingPeriods()
+        {
+            _monoBehaviourFunctions.KillCoroutine(_requestCoroutine);
+        }
+
         protected override void OnOpen()
         {
             _requestCoroutine = _monoBehaviourFunctions.RunCoroutine(GetRequestCoroutine());
@@ -33,10 +47,6 @@ namespace WebClient
         {
             _monoBehaviourFunctions.KillCoroutine(_requestCoroutine);
         }
-
-        public IReadOnlyList<WeatherPeriod> Periods => _periods;
-
-        public event Action PeriodsUpdated;
 
         private IEnumerator GetRequestCoroutine()
         {
