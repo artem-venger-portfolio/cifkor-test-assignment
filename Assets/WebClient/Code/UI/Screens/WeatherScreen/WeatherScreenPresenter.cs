@@ -15,8 +15,8 @@ namespace WebClient
             _model = model;
             _view = view;
 
-            view.Shown += ViewShownEventHandler;
-            view.Hidden += ViewHiddenEventHandler;
+            _view.Shown += ViewShownEventHandler;
+            _view.Hidden += ViewHiddenEventHandler;
             _model.PeriodsUpdated += PeriodsUpdatedEventHandler;
         }
 
