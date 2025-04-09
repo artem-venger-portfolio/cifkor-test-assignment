@@ -9,5 +9,6 @@ namespace WebClient
         public event Action Hidden;
         event Action<int> BreedClicked;
         void DisplayBreeds(IReadOnlyList<DogBreedShortInfo> breeds);
+        void SetLoadingScreenActive(bool isActive);
     }
 }

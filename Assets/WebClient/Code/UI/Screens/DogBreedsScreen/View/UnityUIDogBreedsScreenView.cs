@@ -12,12 +12,20 @@ namespace WebClient
         [SerializeField]
         private DogBreedEntry _entryTemplate;
 
+        [SerializeField]
+        private GameObject _loadingScreen;
+
         private readonly List<DogBreedEntry> _entries = new();
 
         public event Action<int> BreedClicked;
         public event Action Shown;
         public event Action Hidden;
 
+        public void SetLoadingScreenActive(bool isActive)
+        {
+            _loadingScreen.gameObject.SetActive(isActive);
+        }
+        
         public void DisplayBreeds(IReadOnlyList<DogBreedShortInfo> breeds)
         {
             for (var i = 0; i < breeds.Count; i++)
