@@ -31,6 +31,10 @@ namespace WebClient
             _requestQueue.Interrupt(RequestType.DogBreeds);
         }
 
+        public void GetBreedDescription(int index)
+        {
+        }
+
         private void DogBreadsReceivedEventHandler(DogBreedsRequest request)
         {
             Breeds = request.Result;
