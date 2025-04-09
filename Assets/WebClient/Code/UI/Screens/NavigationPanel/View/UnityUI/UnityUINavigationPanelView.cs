@@ -16,10 +16,12 @@ namespace WebClient
         private Transform _tabContainer;
 
         private UnityUIWeatherScreenView _weatherTab;
+        private UnityUIDogBreedsScreenView _dogBreedsTab;
 
         public void CreateTabs()
         {
             AddTab(tabName: "Weather", _weatherTab);
+            AddTab(tabName: "Dog Breeds", _dogBreedsTab);
         }
 
         private void AddTab(string tabName, UnityUINavigationPanelTabViewBase tab)
@@ -33,9 +35,11 @@ namespace WebClient
         }
 
         [Inject]
-        private void InjectDependencies(UnityUIWeatherScreenView weatherTab)
+        private void InjectDependencies(UnityUIWeatherScreenView weatherTab,
+                                        UnityUIDogBreedsScreenView dogBreedsScreenView)
         {
             _weatherTab = weatherTab;
+            _dogBreedsTab = dogBreedsScreenView;
         }
     }
 }

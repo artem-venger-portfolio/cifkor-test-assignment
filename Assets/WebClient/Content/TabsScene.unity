@@ -169,6 +169,7 @@ MonoBehaviour:
   _sceneReferences:
     _navigationPanelView: {fileID: 1183071579}
     _weatherTabViewTemplate: {fileID: 6278427258713109845, guid: 5048af166267c7140aea88f8ca3e8cb8, type: 3}
+    _dogBreedsTabViewTemplate: {fileID: 874658295400929564, guid: 149f3ff0aed19d14cb24af237052d541, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

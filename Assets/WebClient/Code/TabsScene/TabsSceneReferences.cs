@@ -12,8 +12,13 @@ namespace WebClient
         [SerializeField]
         private UnityUIWeatherScreenView _weatherTabViewTemplate;
 
+        [SerializeField]
+        private UnityUIDogBreedsScreenView _dogBreedsTabViewTemplate;
+
         public UnityUINavigationPanelView NavigationPanelView => _navigationPanelView;
 
         public UnityUIWeatherScreenView WeatherTabViewTemplate => _weatherTabViewTemplate;
+
+        public UnityUIDogBreedsScreenView DogBreedsTabViewTemplate => _dogBreedsTabViewTemplate;
     }
 }

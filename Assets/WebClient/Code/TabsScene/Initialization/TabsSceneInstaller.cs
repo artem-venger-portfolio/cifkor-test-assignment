@@ -31,6 +31,7 @@ namespace WebClient
 
             InstallNavigationPanel();
             InstallWeatherTab();
+            InstallDogBreedsTab();
         }
 
         private void InstallNavigationPanel()
@@ -75,6 +76,22 @@ namespace WebClient
 
             Container.Bind<ITextureCache>()
                      .To<TextureCache>()
+                     .AsSingle()
+                     .NonLazy();
+        }
+
+        private void InstallDogBreedsTab()
+        {
+            Container.Bind<DogBreedsScreenModel>()
+                     .AsSingle()
+                     .NonLazy();
+
+            Container.Bind(typeof(IDogBreedsScreenView), typeof(UnityUIDogBreedsScreenView))
+                     .FromComponentInNewPrefab(_sceneReferences.DogBreedsTabViewTemplate)
+                     .AsSingle()
+                     .NonLazy();
+
+            Container.Bind<DogBreedsScreenPresenter>()
                      .AsSingle()
                      .NonLazy();
         }
