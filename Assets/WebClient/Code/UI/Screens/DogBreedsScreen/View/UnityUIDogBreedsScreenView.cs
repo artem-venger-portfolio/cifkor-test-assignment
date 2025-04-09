@@ -32,6 +32,7 @@ namespace WebClient
                 var currentEntry = _entries[i];
                 currentEntry.SetIndex(i);
                 currentEntry.SetName(currentBreed.Name);
+                currentEntry.gameObject.SetActive(value: true);
             }
         }
 
