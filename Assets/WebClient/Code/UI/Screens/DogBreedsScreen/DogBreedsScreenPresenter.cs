@@ -14,6 +14,7 @@
             _view.Hidden += ViewHiddenEventHandler;
             _view.BreedClicked += BreedClickedEventHandler;
             _model.BreedsReceived += BreedsReceivedEventHandler;
+            _model.DescriptionReceived += DescriptionReceivedEventHandler;
         }
 
         private void ViewShownEventHandler()
@@ -34,6 +35,10 @@
         private void BreedClickedEventHandler(int index)
         {
             _model.GetBreedDescription(index);
+        }
+
+        private void DescriptionReceivedEventHandler(DogBreedDescription description)
+        {
         }
     }
 }
