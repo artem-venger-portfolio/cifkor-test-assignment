@@ -33,6 +33,7 @@ namespace WebClient
         public void InterruptRequestsIfNeeded()
         {
             _requestQueue.Interrupt(RequestType.DogBreeds);
+            _requestQueue.Interrupt(RequestType.DogBreedDescription);
         }
 
         public void GetBreedDescription(int index)
