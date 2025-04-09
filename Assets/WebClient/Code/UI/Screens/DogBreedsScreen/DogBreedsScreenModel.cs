@@ -1,4 +1,7 @@
-﻿namespace WebClient
+﻿using System;
+using System.Collections.Generic;
+
+namespace WebClient
 {
     public class DogBreedsScreenModel
     {
@@ -14,6 +17,10 @@
             _logger = logger;
         }
 
+        public List<DogBreedShortInfo> Breeds { get; private set; }
+
+        public event Action BreedsReceived;
+
         public void GetBreeds()
         {
             _requestQueue.Add(_dogBreedsRequestFactory.Create(DogBreadsReceivedEventHandler));
@@ -26,10 +33,8 @@
 
         private void DogBreadsReceivedEventHandler(DogBreedsRequest request)
         {
-            foreach (var info in request.Result)
-            {
-                _logger.LogInfo($"name: {info.Name}, id: {info.ID}");
-            }
+            Breeds = request.Result;
+            BreedsReceived?.Invoke();
         }
     }
 }
