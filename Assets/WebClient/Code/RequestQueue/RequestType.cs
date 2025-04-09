@@ -3,6 +3,6 @@
     public enum RequestType
     {
         Weather,
-        DogBreed,
+        DogBreeds,
     }
 }

@@ -94,6 +94,10 @@ namespace WebClient
             Container.Bind<DogBreedsScreenPresenter>()
                      .AsSingle()
                      .NonLazy();
+
+            Container.BindFactory<Action<DogBreedsRequest>, DogBreedsRequest, DogBreedsRequest.Factory>()
+                     .AsSingle()
+                     .NonLazy();
         }
     }
 }
