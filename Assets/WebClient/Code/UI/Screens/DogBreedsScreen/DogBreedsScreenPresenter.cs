@@ -12,6 +12,7 @@
 
             _view.Shown += ViewShownEventHandler;
             _view.Hidden += ViewHiddenEventHandler;
+            _model.BreedsReceived += BreedsReceivedEventHandler;
         }
 
         private void ViewShownEventHandler()
@@ -22,6 +23,11 @@
         private void ViewHiddenEventHandler()
         {
             _model.InterruptRequestsIfNeeded();
+        }
+
+        private void BreedsReceivedEventHandler()
+        {
+            _view.DisplayBreeds(_model.Breeds);
         }
     }
 }
