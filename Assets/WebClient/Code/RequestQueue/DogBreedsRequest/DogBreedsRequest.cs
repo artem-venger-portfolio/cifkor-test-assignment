@@ -92,8 +92,9 @@ namespace WebClient
             Result.Clear();
             foreach (var currentData in _response.data)
             {
+                var id = currentData.id;
                 var name = currentData.attributes.name;
-                Result.Add(new DogBreedShortInfo(name));
+                Result.Add(new DogBreedShortInfo(id, name));
             }
         }
 
