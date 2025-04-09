@@ -11,7 +11,7 @@ namespace WebClient
     [UsedImplicitly]
     public class DogBreedsRequest : IWebRequest
     {
-        private const string URL = "https://dogapi.dog/docs/api-v2/breeds";
+        private const string URL = "https://dogapi.dog/api/v2/breeds";
         private readonly MonoBehaviourFunctions _monoBehaviourFunctions;
         private readonly Action<DogBreedsRequest> _completed;
         private readonly IProjectLogger _logger;
