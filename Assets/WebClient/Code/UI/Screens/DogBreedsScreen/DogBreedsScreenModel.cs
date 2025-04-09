@@ -26,6 +26,8 @@ namespace WebClient
 
         public event Action BreedsReceived;
         public event Action<DogBreedDescription> DescriptionReceived;
+        public event Action<int> DescriptionLoadingStarted;
+        public event Action<int> DescriptionLoadingFinished;
 
         public void GetBreeds()
         {
@@ -38,25 +40,32 @@ namespace WebClient
             InterruptDescriptionRequest();
         }
 
-        private void InterruptDescriptionRequest()
-        {
-            _requestQueue.Interrupt(RequestType.DogBreedDescription);
-        }
-
         public void GetBreedDescription(int index)
         {
             if (_currentDescriptionRequest != null)
             {
                 InterruptDescriptionRequest();
+                InvokeDescriptionLoadingFinished();
                 RestDescriptionRequestFields();
             }
-            
+
             _breedIndexOfLoadingDescription = index;
             var id = Breeds[_breedIndexOfLoadingDescription].ID;
             _currentDescriptionRequest = _descriptionRequestFactory.Create(id, DescriptionReceivedEventHandler);
             _requestQueue.Add(_currentDescriptionRequest);
+            DescriptionLoadingStarted?.Invoke(_breedIndexOfLoadingDescription);
         }
-        
+
+        private void InterruptDescriptionRequest()
+        {
+            _requestQueue.Interrupt(RequestType.DogBreedDescription);
+        }
+
+        private void InvokeDescriptionLoadingFinished()
+        {
+            DescriptionLoadingFinished?.Invoke(_breedIndexOfLoadingDescription);
+        }
+
         private void RestDescriptionRequestFields()
         {
             _currentDescriptionRequest = null;
@@ -70,6 +79,7 @@ namespace WebClient
 
         private void DogBreadsReceivedEventHandler(DogBreedsRequest request)
         {
+            InvokeDescriptionLoadingFinished();
             RestDescriptionRequestFields();
             Breeds = request.Result;
             BreedsReceived?.Invoke();
