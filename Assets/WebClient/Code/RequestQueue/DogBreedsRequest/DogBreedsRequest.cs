@@ -35,6 +35,7 @@ namespace WebClient
 
         public void Send()
         {
+            LogInfo(nameof(Send));
             _requestCoroutine = _monoBehaviourFunctions.RunCoroutine(GetRequestEnumerator());
         }
 
@@ -45,6 +46,8 @@ namespace WebClient
 
         public void Interrupt()
         {
+            LogInfo(nameof(Interrupt));
+
             if (IsInProgress() == false)
             {
                 return;
@@ -96,6 +99,11 @@ namespace WebClient
                 var name = currentData.attributes.name;
                 Result.Add(new DogBreedShortInfo(id, name));
             }
+        }
+
+        private void LogInfo(string message)
+        {
+            _logger.LogInfo($"[{nameof(DogBreedsRequest)}] {message}");
         }
 
         [UsedImplicitly]
