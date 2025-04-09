@@ -8,6 +8,9 @@ namespace WebClient
     {
         [SerializeField]
         private RectTransform _content;
+
+        [SerializeField]
+        private DogBreedEntry _entryTemplate;
         
         public event Action Shown;
         public event Action Hidden;
