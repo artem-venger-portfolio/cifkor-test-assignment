@@ -29,6 +29,11 @@ namespace WebClient
                      .AsSingle()
                      .NonLazy();
 
+            Container.Bind<IInfoPanel>()
+                     .FromInstance(_sceneReferences.InfoPanel)
+                     .AsSingle()
+                     .NonLazy();
+
             InstallNavigationPanel();
             InstallWeatherTab();
             InstallDogBreedsTab();
