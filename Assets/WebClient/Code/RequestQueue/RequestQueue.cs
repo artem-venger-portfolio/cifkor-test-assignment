@@ -60,7 +60,7 @@ namespace WebClient
 
         private void InterruptCurrentRequestWithType(RequestType requestType)
         {
-            if (_currentRequest.Type == requestType)
+            if (_currentRequest != null && _currentRequest.Type == requestType)
             {
                 _currentRequest.Interrupt();
                 _currentRequest = null;
