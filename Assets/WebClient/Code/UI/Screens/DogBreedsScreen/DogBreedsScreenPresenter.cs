@@ -9,6 +9,19 @@
         {
             _model = model;
             _view = view;
+
+            _view.Shown += ViewShownEventHandler;
+            _view.Hidden += ViewHiddenEventHandler;
+        }
+
+        private void ViewShownEventHandler()
+        {
+            _model.GetBreeds();
+        }
+
+        private void ViewHiddenEventHandler()
+        {
+            _model.InterruptRequestsIfNeeded();
         }
     }
 }
