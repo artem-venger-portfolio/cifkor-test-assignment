@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -25,7 +26,10 @@ namespace WebClient
             _monoBehaviourFunctions = monoBehaviourFunctions;
             _completed = completed;
             _logger = logger;
+            Result = new List<DogBreedShortInfo>();
         }
+
+        public List<DogBreedShortInfo> Result { get; }
 
         public RequestType Type => RequestType.DogBreeds;
 
@@ -75,10 +79,23 @@ namespace WebClient
             var json = _request.downloadHandler.text;
             _response = JsonUtility.FromJson<DogBreedsResponse>(json);
 
+            FillInfo();
+
             _requestCoroutine = null;
             _isInProgress = false;
 
             _completed(this);
+        }
+
+        private void FillInfo()
+        {
+            Result.Clear();
+            foreach (var currentData in _response.data)
+            {
+                var id = currentData.id;
+                var name = currentData.attributes.name;
+                Result.Add(new DogBreedShortInfo(id, name));
+            }
         }
 
         [UsedImplicitly]
