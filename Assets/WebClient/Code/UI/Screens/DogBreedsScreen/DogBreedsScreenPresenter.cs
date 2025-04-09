@@ -4,11 +4,13 @@
     {
         private readonly DogBreedsScreenModel _model;
         private readonly IDogBreedsScreenView _view;
+        private readonly IInfoPanel _infoPanel;
 
-        public DogBreedsScreenPresenter(DogBreedsScreenModel model, IDogBreedsScreenView view)
+        public DogBreedsScreenPresenter(DogBreedsScreenModel model, IDogBreedsScreenView view, IInfoPanel infoPanel)
         {
             _model = model;
             _view = view;
+            _infoPanel = infoPanel;
 
             _view.Shown += ViewShownEventHandler;
             _view.Hidden += ViewHiddenEventHandler;
@@ -39,6 +41,7 @@
 
         private void DescriptionReceivedEventHandler(DogBreedDescription description)
         {
+            _infoPanel.Open(description.Name, description.Description);
         }
     }
 }
