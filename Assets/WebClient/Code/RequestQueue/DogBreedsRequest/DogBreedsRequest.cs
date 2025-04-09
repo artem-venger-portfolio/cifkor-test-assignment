@@ -2,6 +2,7 @@
 using System.Collections;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Networking;
 using Zenject;
 
 namespace WebClient
@@ -12,6 +13,7 @@ namespace WebClient
         private readonly MonoBehaviourFunctions _monoBehaviourFunctions;
         private readonly Action<DogBreedsRequest> _completed;
         private Coroutine _requestCoroutine;
+        private UnityWebRequest _request;
         private bool _isInProgress;
 
         public DogBreedsRequest(MonoBehaviourFunctions monoBehaviourFunctions, Action<DogBreedsRequest> completed)
@@ -44,6 +46,9 @@ namespace WebClient
                 _monoBehaviourFunctions.KillCoroutine(_requestCoroutine);
                 _requestCoroutine = null;
             }
+            
+            _request.Dispose();
+            _request = null;
         }
 
         private IEnumerator GetRequestEnumerator()
