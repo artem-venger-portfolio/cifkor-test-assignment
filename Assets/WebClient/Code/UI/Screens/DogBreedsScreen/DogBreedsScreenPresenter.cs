@@ -50,12 +50,12 @@
 
         private void DescriptionLoadingFinishedEventHandler(int index)
         {
-            _view.ShowLoadingIndicator(index);
+            _view.HideLoadingIndicator(index);
         }
 
         private void DescriptionLoadingStartedEventHandler(int index)
         {
-            _view.HideLoadingIndicator(index);
+            _view.ShowLoadingIndicator(index);
         }
     }
 }
