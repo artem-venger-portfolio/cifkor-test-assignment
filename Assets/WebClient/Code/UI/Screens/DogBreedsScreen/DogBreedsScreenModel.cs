@@ -37,28 +37,28 @@ namespace WebClient
         public void InterruptRequestsIfNeeded()
         {
             _requestQueue.Interrupt(RequestType.DogBreeds);
-            InterruptDescriptionRequest();
+            InterruptDescriptionRequestIfNeeded();
+        }
+        
+        private void InterruptDescriptionRequestIfNeeded()
+        {
+            if (_currentDescriptionRequest != null)
+            {
+                InvokeDescriptionLoadingFinished();
+                RestDescriptionRequestFields();
+                _requestQueue.Interrupt(RequestType.DogBreedDescription);
+            }
         }
 
         public void GetBreedDescription(int index)
         {
-            if (_currentDescriptionRequest != null)
-            {
-                InterruptDescriptionRequest();
-                InvokeDescriptionLoadingFinished();
-                RestDescriptionRequestFields();
-            }
+            InterruptDescriptionRequestIfNeeded();
 
             _breedIndexOfLoadingDescription = index;
             var id = Breeds[_breedIndexOfLoadingDescription].ID;
             _currentDescriptionRequest = _descriptionRequestFactory.Create(id, DescriptionReceivedEventHandler);
             _requestQueue.Add(_currentDescriptionRequest);
             DescriptionLoadingStarted?.Invoke(_breedIndexOfLoadingDescription);
-        }
-
-        private void InterruptDescriptionRequest()
-        {
-            _requestQueue.Interrupt(RequestType.DogBreedDescription);
         }
 
         private void InvokeDescriptionLoadingFinished()
