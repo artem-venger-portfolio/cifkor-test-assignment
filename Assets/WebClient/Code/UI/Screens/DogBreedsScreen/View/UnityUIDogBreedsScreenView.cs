@@ -14,6 +14,7 @@ namespace WebClient
 
         private readonly List<DogBreedEntry> _entries = new();
 
+        public event Action<int> BreedClicked;
         public event Action Shown;
         public event Action Hidden;
 
@@ -53,6 +54,7 @@ namespace WebClient
 
         private void EntryClickedEventHandler(int index)
         {
+            BreedClicked?.Invoke(index);
         }
     }
 }

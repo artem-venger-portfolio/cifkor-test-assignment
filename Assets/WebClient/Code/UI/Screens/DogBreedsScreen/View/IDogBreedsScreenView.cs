@@ -7,6 +7,7 @@ namespace WebClient
     {
         public event Action Shown;
         public event Action Hidden;
+        event Action<int> BreedClicked;
         void DisplayBreeds(IReadOnlyList<DogBreedShortInfo> breeds);
     }
 }
