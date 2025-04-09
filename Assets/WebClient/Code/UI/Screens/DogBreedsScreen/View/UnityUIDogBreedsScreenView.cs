@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace WebClient
 {
     public sealed class UnityUIDogBreedsScreenView : UnityUINavigationPanelTabViewBase, IDogBreedsScreenView
     {
+        [SerializeField]
+        private RectTransform _content;
+        
         public event Action Shown;
         public event Action Hidden;
 
