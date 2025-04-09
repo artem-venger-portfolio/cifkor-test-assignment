@@ -66,7 +66,7 @@ namespace WebClient
 
             _request = UnityWebRequest.Get(URL);
 
-            yield return _request;
+            yield return _request.SendWebRequest();
 
             if (_request.result != UnityWebRequest.Result.Success)
             {
