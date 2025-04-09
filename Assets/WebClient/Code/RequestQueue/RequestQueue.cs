@@ -44,7 +44,7 @@ namespace WebClient
                 _currentRequest = _requests.Dequeue();
                 _currentRequest.Send();
 
-                while (_currentRequest.IsInProgress())
+                while (_currentRequest !=null && _currentRequest.IsInProgress())
                 {
                     yield return null;
                 }
