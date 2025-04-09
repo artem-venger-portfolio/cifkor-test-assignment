@@ -9,6 +9,8 @@ namespace WebClient
         private readonly DogBreedsRequest.Factory _dogBreedsRequestFactory;
         private readonly IRequestQueue _requestQueue;
         private readonly IProjectLogger _logger;
+        private DogBreedDescriptionRequest _currentDescriptionRequest;
+        private int _breedIndexOfLoadingDescription;
 
         public DogBreedsScreenModel(DogBreedsRequest.Factory dogBreedsRequestFactory,
                                     DogBreedDescriptionRequest.Factory descriptionRequestFactory,
@@ -33,14 +35,32 @@ namespace WebClient
         public void InterruptRequestsIfNeeded()
         {
             _requestQueue.Interrupt(RequestType.DogBreeds);
+            InterruptDescriptionRequest();
+        }
+
+        private void InterruptDescriptionRequest()
+        {
             _requestQueue.Interrupt(RequestType.DogBreedDescription);
         }
 
         public void GetBreedDescription(int index)
         {
-            var id = Breeds[index].ID;
-            var request = _descriptionRequestFactory.Create(id, DescriptionReceivedEventHandler);
-            _requestQueue.Add(request);
+            if (_currentDescriptionRequest != null)
+            {
+                InterruptDescriptionRequest();
+                RestDescriptionRequestFields();
+            }
+            
+            _breedIndexOfLoadingDescription = index;
+            var id = Breeds[_breedIndexOfLoadingDescription].ID;
+            _currentDescriptionRequest = _descriptionRequestFactory.Create(id, DescriptionReceivedEventHandler);
+            _requestQueue.Add(_currentDescriptionRequest);
+        }
+        
+        private void RestDescriptionRequestFields()
+        {
+            _currentDescriptionRequest = null;
+            _breedIndexOfLoadingDescription = -1;
         }
 
         private void DescriptionReceivedEventHandler(DogBreedDescriptionRequest request)
@@ -50,6 +70,7 @@ namespace WebClient
 
         private void DogBreadsReceivedEventHandler(DogBreedsRequest request)
         {
+            RestDescriptionRequestFields();
             Breeds = request.Result;
             BreedsReceived?.Invoke();
         }
