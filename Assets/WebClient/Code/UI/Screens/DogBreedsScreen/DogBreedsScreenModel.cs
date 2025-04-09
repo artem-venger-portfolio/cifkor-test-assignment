@@ -23,6 +23,7 @@ namespace WebClient
         public List<DogBreedShortInfo> Breeds { get; private set; }
 
         public event Action BreedsReceived;
+        public event Action<DogBreedDescription> DescriptionReceived;
 
         public void GetBreeds()
         {
@@ -43,7 +44,7 @@ namespace WebClient
 
         private void DescriptionReceivedEventHandler(DogBreedDescriptionRequest request)
         {
-            
+            DescriptionReceived?.Invoke(request.Result);
         }
 
         private void DogBreadsReceivedEventHandler(DogBreedsRequest request)
