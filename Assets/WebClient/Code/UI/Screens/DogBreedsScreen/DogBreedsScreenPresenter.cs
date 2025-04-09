@@ -22,6 +22,7 @@
         private void ViewShownEventHandler()
         {
             _model.GetBreeds();
+            _view.SetLoadingScreenActive(true);
         }
 
         private void ViewHiddenEventHandler()
@@ -32,6 +33,7 @@
         private void BreedsReceivedEventHandler()
         {
             _view.DisplayBreeds(_model.Breeds);
+            _view.SetLoadingScreenActive(false);
         }
 
         private void BreedClickedEventHandler(int index)
