@@ -25,7 +25,7 @@ namespace WebClient
         {
             _loadingScreen.gameObject.SetActive(isActive);
         }
-        
+
         public void DisplayBreeds(IReadOnlyList<DogBreedShortInfo> breeds)
         {
             for (var i = 0; i < breeds.Count; i++)
@@ -43,6 +43,16 @@ namespace WebClient
                 currentEntry.SetName(currentBreed.Name);
                 currentEntry.gameObject.SetActive(value: true);
             }
+        }
+
+        public void ShowLoadingIndicator(int index)
+        {
+            _entries[index].SetLoadingIndicatorActive(isActive: true);
+        }
+
+        public void HideLoadingIndicator(int index)
+        {
+            _entries[index].SetLoadingIndicatorActive(isActive: false);
         }
 
         protected override void OnShow()
