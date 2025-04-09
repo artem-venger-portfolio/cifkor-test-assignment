@@ -98,6 +98,11 @@ namespace WebClient
             Container.BindFactory<Action<DogBreedsRequest>, DogBreedsRequest, DogBreedsRequest.Factory>()
                      .AsSingle()
                      .NonLazy();
+
+            Container.BindFactory<string, Action<DogBreedDescriptionRequest>, DogBreedDescriptionRequest,
+                          DogBreedDescriptionRequest.Factory>()
+                     .AsSingle()
+                     .NonLazy();
         }
     }
 }
