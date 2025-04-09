@@ -74,13 +74,13 @@ namespace WebClient
 
         private void DescriptionReceivedEventHandler(DogBreedDescriptionRequest request)
         {
+            InvokeDescriptionLoadingFinished();
+            RestDescriptionRequestFields();
             DescriptionReceived?.Invoke(request.Result);
         }
 
         private void DogBreadsReceivedEventHandler(DogBreedsRequest request)
         {
-            InvokeDescriptionLoadingFinished();
-            RestDescriptionRequestFields();
             Breeds = request.Result;
             BreedsReceived?.Invoke();
         }
